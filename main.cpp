@@ -17,7 +17,6 @@
 #else
 #include <GL/glut.h>
 #endif
-#include<windows.h>
 #include <stdlib.h>
 
 static int slices = 16;
