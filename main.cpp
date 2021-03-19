@@ -49,7 +49,7 @@ void axisDraw(){
 void pillarComponent(){
 
     glBegin(GL_QUADS);
-    glColor3ub(255, 69, 0);
+    glColor3ub(255,140,0);
     glVertex2f(-0.75f, 0.5f);
     glVertex2f(-0.75f, 0.1f);
     glVertex2f(-0.8f, 0.1f);
@@ -58,7 +58,7 @@ void pillarComponent(){
 
 
     glBegin(GL_QUADS);
-    glColor3ub(255, 69, 0);
+    glColor3ub(255,140,0);
     glVertex2f(-0.755f, 0.55f);
     glVertex2f(-0.755f, 0.5f);
     glVertex2f(-0.795f, 0.5f);
@@ -68,7 +68,7 @@ void pillarComponent(){
 
     x = -.775f; y = .55f; radius =.02f;
 	glBegin(GL_TRIANGLE_FAN);
-        glColor3ub(255, 69, 0);
+        glColor3ub(255,140,0);
 		glVertex2f(x, y);
 		for(i = 0; i <= triangleAmount;i++) {
 			glVertex2f(
@@ -78,9 +78,8 @@ void pillarComponent(){
 		}
 	glEnd();
 
-	glLineWidth(4);
 	glBegin(GL_LINES);
-	glColor3ub(255, 69, 0);
+    glColor3ub(255,140,0);
 	glVertex2f(-0.776f, 0.59f);
     glVertex2f(-0.776f, 0.56f);
     glVertex2f(-0.785f, 0.58f);
@@ -90,7 +89,7 @@ void pillarComponent(){
 
 void gombujhComponent(){
   glBegin(GL_QUADS);
-  glColor3ub(255, 69, 0);
+  glColor3ub(255,140,0);
   glVertex2f(-0.6f, 0.57f);
   glVertex2f(-0.6f, 0.52f);
   glVertex2f(-0.75f, 0.52f);
@@ -99,7 +98,7 @@ void gombujhComponent(){
 
    x = -.68f; y = .56f; radius =.045f;
    glBegin(GL_TRIANGLE_FAN);
-        glColor3ub(255, 69, 0);
+        glColor3ub(255,140,0);
 		glVertex2f(x, y);
 		for(i = 0; i <= triangleAmount;i++) {
 			glVertex2f(
@@ -112,7 +111,7 @@ void gombujhComponent(){
 
 
    glBegin(GL_POINTS);
-   glColor3ub(255, 69, 0);
+   glColor3ub(255,140,0);
    glVertex2f(-0.68f, 0.62f);
    glEnd();
 }
@@ -183,6 +182,7 @@ void ahsanMonjilView(){
     glVertex2f(-0.55f, 0.53f);
     glVertex2f(0.6f, 0.53f);
     glEnd();
+    glLineWidth(4);
 
     glLoadIdentity();
     glTranslatef(0.15, -0.09, 0);
@@ -429,6 +429,7 @@ void ahsanMonjilView(){
     glVertex2f(0.35f, 0.0f);
     glVertex2f(-0.3f, 0.0f);
     glEnd();
+    glLineWidth(4);
 
 
 }
