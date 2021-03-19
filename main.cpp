@@ -2,7 +2,7 @@
 #include <iostream>
 #include <GL/glut.h>
 #include <math.h>
-#define PI 3.1416
+#define PI  3.14159265358979323846
 
 int i;
 int triangleAmount = 100;
@@ -12,6 +12,18 @@ GLfloat speed = 0.1f;
 GLfloat x = 0,y = 0,radius = 0;
 GLfloat twicePi = 2.0f * PI;
 
+
+
+
+
+//Car movement
+GLfloat car_position = 0.0f;
+GLfloat car_speed = 0.079f;
+
+GLfloat car3_pos = 0.0f;
+GLfloat car4_pos = 0.78f;
+
+
 void update(int value) {
 
     if(position <-1.0)
@@ -19,11 +31,56 @@ void update(int value) {
 
     position -= speed;
 
+
+
+    //car
+       if(car_position > 1.0)
+        car_position = -1.2f;
+
+    car_position += car_speed;
+
+
+    if(car3_pos < -1.0)
+        car3_pos = 1.2f;
+
+    car3_pos -= car_speed;
+
+
+    if(car4_pos < -1.0)
+        car4_pos = 1.2f;
+
+    car4_pos -= car_speed;
+
+
+
+
 	glutPostRedisplay();
-
-
 	glutTimerFunc(100, update, 0);
 }
+
+
+
+//make circle
+void Circle(GLfloat cx, GLfloat cy,GLfloat cz, GLfloat radius,int r,int g,int b)
+{
+	int triangleAmount = 40; //# of triangles used to draw circle
+	GLfloat twicePi = 2.0f * 3.1416;
+    int counter=0;
+
+    glColor3ub(r,g,b);
+	glBegin(GL_TRIANGLE_FAN);
+		glVertex3f(cx, cy,cz); // center of circle
+		for(int i = 0; i <= triangleAmount;i++) {
+			counter+=1;
+			glVertex3f(
+		            cx + (radius * cos(i *  twicePi / triangleAmount)),
+			    cy + (radius * sin(i * twicePi / triangleAmount)),cz
+			);
+		}
+	glEnd();
+}
+
+
 
 void Idle()
 {
@@ -434,11 +491,516 @@ void ahsanMonjilView(){
 
 }
 
-void fullView(){
+
+
+
+void road()
+{
+
+
+    //road-base
+    glBegin(GL_POLYGON);
+
+      glColor3ub(145,145,145);
+      glVertex2f(-1.0f, 0.0f);
+      glVertex2f(-1.0f, -0.2f);
+      glVertex2f(1.0f, -0.2f);
+      glVertex2f(1.0f, 0.0f);
+
+   glEnd();
+
+//road border
+glLineWidth(6.0);
+glBegin(GL_LINES);
+
+      glColor3ub(255,255,255);
+      glVertex2f(-1.0f, -0.005f);//building front road border
+      glVertex2f(1.0f, -0.005f);
+
+    glEnd();
+
+//Road lines
+    float x1,x2,y, a,b;
+    x1=-1.0; x2=-0.92; y=-0.0999;
+    glLineWidth(6.0);
+
+    glBegin(GL_LINES);
+
+            for(int i =0; i<17; i++)
+            {
+                glVertex2f(x1,y );
+                glVertex2f(x2,y);
+
+                x1=x1+.12;
+                x2=x2+.12;
+            }
+
+    glEnd();
+
+
+	glFlush();
+}
+
+
+
+
+
+void car()
+{
+
+    glPushMatrix();
+    glTranslatef(car_position,0,0);
+    glBegin(GL_POLYGON);
+    glColor3ub(255, 255, 51);
+    glVertex3f(-0.3,-0.07,0);
+    glVertex3f(-0.15,-0.07,0);
+     glVertex3f(-0.15,-0.035,0);
+    glVertex3f(-0.18,-0.035,0);
+    glVertex3f(-0.20,-0.02,0);
+    glVertex3f(-0.25,-0.02,0);
+    glVertex3f(-0.27,-0.035,0);
+     glVertex3f(-0.3,-0.035,0);
+      glVertex3f(-0.27,-0.035,0);
+      glVertex3f(-0.3,-0.07,0);
+    glEnd();
+
+    //car window
+
+    glBegin(GL_POLYGON);
+glColor3ub(0,0,0);
+    //car window left
+    glVertex3f(-0.255,-0.038,0);
+    glVertex3f(-0.235,-0.038,0);
+    glVertex3f(-0.241,-0.030,0);
+    glVertex3f(-0.248,-0.030,0);
+    glVertex3f(-0.255,-0.035,0);
+    glEnd();
+
+     //car window right
+    glBegin(GL_POLYGON);
+    glColor3ub(0,0,0);
+    glVertex3f(-0.221,-0.038,0);
+    glVertex3f(-0.20,-0.038,0);
+    glVertex3f(-0.209,-0.030,0);
+    glVertex3f(-0.216,-0.030,0);
+    glVertex3f(-0.221,-0.035,0);
+    glEnd();
+
+
+    glLineWidth(1.0);
+    glBegin(GL_LINES);
+    glColor3ub(185,0,0);
+    glVertex2f(-0.27,-.04);
+    glVertex2f(-0.18,-.04);
+    glEnd();
+
+    //Wheels
+    //backbumper
+     Circle(-0.26f,-0.070f,0.0f,0.010f,0,0,0);
+     //front bumper
+    Circle(-0.199f,-0.07f,0.0f,0.01f,0,0,0);
+    glPopMatrix();
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+void car_2()
+{
+
+       glPushMatrix();
+      glTranslatef(car_position,0,0);
+
+      glBegin(GL_QUADS);
+      glColor3ub(255, 77, 255);
+
+      glVertex2f(0.025f, 0.001f);
+      glVertex2f(0.025f, -0.045f);
+      glVertex2f(0.222f, -0.045f);
+
+      glVertex2f(0.222f, 0.001f);
+
+
+      glEnd();
+
+      //glass part of car
+
+      glBegin(GL_POLYGON);
+      glColor3ub(255, 77, 255);
+
+      glVertex2f(0.065f, 0.031f);
+      glVertex2f(0.055f, 0.001f);
+      glVertex2f(0.20f, -0.001f);
+
+      glVertex2f(0.185f, 0.031f);
+
+
+      glEnd();
+      //glass
+       glBegin(GL_POLYGON);
+      glColor3ub(168,204,215);
+
+      glVertex2f(0.065f, 0.027f);
+      glVertex2f(0.058f, 0.001f);
+      glVertex2f(0.198f, 0.001f);
+
+      glVertex2f(0.185f, 0.027f);
+
+
+      glEnd();
+
+      //head part
+
+       glBegin(GL_POLYGON);
+      glColor3ub(255, 77, 255);
+
+      glVertex2f(0.222f, 0.001f);
+      glVertex2f(0.222f, -0.045f);
+      glVertex2f(0.252f, -0.045f);
+
+      glVertex2f(0.252f, -0.033f);
+
+
+      glEnd();
+
+       glLineWidth(1.0);
+       glBegin(GL_LINES);
+
+      glColor3ub(255, 77, 255);
+      glVertex2f(.12f, 0.031f);
+      glVertex2f(.12f, -0.045f);
+   glEnd();
+
+
+   //headlight
+      glBegin(GL_QUADS);
+      glColor3ub(204,204,0);
+
+      glVertex2f(0.233f, -0.033f);
+      glVertex2f(0.233f, -0.038f);
+      glVertex2f(0.252f, -0.038f);
+
+      glVertex2f(0.252f, -0.033f);
+
+
+      glEnd();
+
+      // back light
+       glBegin(GL_QUADS);
+      glColor3ub(255, 77, 255);
+
+      glVertex2f(0.015f, -0.035f);
+      glVertex2f(0.015f, -0.045f);
+      glVertex2f(0.025f, -0.045f);
+
+      glVertex2f(0.025f, -0.035f);
+
+
+      glEnd();
+
+       //Wheels
+    //backbumper
+
+     Circle(0.055f,-0.045f,0.0f,0.010f,0,0,0);
+     //front bumper
+    Circle(0.20f,-0.045f,0.0f,0.01f,0,0,0);
+    glPopMatrix();
+
+
+
+}
+
+
+
+
+
+
+
+
+void car_3()
+{
+       glPushMatrix();
+      glTranslatef(car3_pos,0,0);
+
+      glBegin(GL_QUADS);
+      glColor3ub(0, 128, 0);
+
+      glVertex2f(0.04f, -0.14f);
+      glVertex2f(0.04f, -0.19f);
+      glVertex2f(0.19f, -0.19f);
+
+      glVertex2f(0.19f, -0.14f);
+
+
+      glEnd();
+
+      //glass part of car
+
+      glBegin(GL_POLYGON);
+      glColor3ub(0, 128, 0);
+
+      glVertex2f(0.078f, -0.11f);
+      glVertex2f(0.055f, -0.14f);
+      glVertex2f(0.16f, -0.14f);
+
+      glVertex2f(0.13f, -0.11f);
+
+
+      glEnd();
+      //glass
+
+      glBegin(GL_POLYGON);
+      glColor3ub(168,204,215);
+
+      glVertex2f(0.078f, -0.115f);
+      glVertex2f(0.059f, -0.14f);
+      glVertex2f(0.11f, -0.14f);
+      glVertex2f(0.11f, -0.115f);
+
+
+     // glVertex2f(0.155f, -0.14f);
+
+     // glVertex2f(0.13f, -0.115f);
+
+
+      glEnd();
+
+      //glass-2
+       glBegin(GL_POLYGON);
+      glColor3ub(168,204,215);
+
+      glVertex2f(0.113f, -0.115f);
+      glVertex2f(0.113f, -0.14f);
+      glVertex2f(0.155f, -0.14f);
+      glVertex2f(0.13f, -0.115f);
+
+
+      glEnd();
+
+
+
+      //head part
+
+       glBegin(GL_POLYGON);
+      glColor3ub(0, 128, 0);
+
+      glVertex2f(0.04f, -0.14f);
+      glVertex2f(0.015f, -0.17f);
+      glVertex2f(0.015f, -0.19f);
+
+      glVertex2f(0.04f, -0.19f);
+
+
+      glEnd();
+
+    /*   glLineWidth(1.0);
+       glBegin(GL_LINES);
+
+      glColor3ub(128,0,128);
+      glVertex2f(.12f, 0.031f);
+      glVertex2f(.12f, -0.045f);
+   glEnd(); */
+
+
+   //headlight
+      glBegin(GL_QUADS);
+      glColor3ub(204,204,0);
+
+      glVertex2f(0.015f, -0.17f);
+      glVertex2f(0.015f, -0.18f);
+      glVertex2f(0.029f, -0.18f);
+
+      glVertex2f(0.029f, -0.17f);
+
+
+      glEnd();
+
+      // back light
+       glBegin(GL_QUADS);
+      glColor3ub(0, 128, 0);
+
+      glVertex2f(0.19f, -0.18f);
+      glVertex2f(0.19f, -0.19f);
+      glVertex2f(0.196f, -0.19f);
+
+      glVertex2f(0.196f, -0.18f);
+
+
+      glEnd();
+
+       //Wheels
+    //backbumper
+
+     Circle(0.068f,-0.19f,0.0f,0.010f,0,0,0);
+     //front bumper
+    Circle(0.15f,-0.19f,0.0f,0.01f,0,0,0);
+glPopMatrix();
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void car_4()
+{
+       glPushMatrix();
+      glTranslatef(car4_pos,0,0);
+
+      glBegin(GL_QUADS);
+      glColor3ub(255, 0, 0);
+
+      glVertex2f(0.04f, -0.14f);
+      glVertex2f(0.04f, -0.19f);
+      glVertex2f(0.19f, -0.19f);
+
+      glVertex2f(0.19f, -0.14f);
+
+
+      glEnd();
+
+      //glass part of car
+
+      glBegin(GL_POLYGON);
+      glColor3ub(255, 0, 0);
+
+      glVertex2f(0.078f, -0.11f);
+      glVertex2f(0.055f, -0.14f);
+      glVertex2f(0.16f, -0.14f);
+
+      glVertex2f(0.13f, -0.11f);
+
+
+      glEnd();
+      //glass
+
+      glBegin(GL_POLYGON);
+      glColor3ub(168,204,215);
+
+      glVertex2f(0.078f, -0.115f);
+      glVertex2f(0.059f, -0.14f);
+      glVertex2f(0.11f, -0.14f);
+      glVertex2f(0.11f, -0.115f);
+
+
+     // glVertex2f(0.155f, -0.14f);
+
+     // glVertex2f(0.13f, -0.115f);
+
+
+      glEnd();
+
+      //glass-2
+       glBegin(GL_POLYGON);
+      glColor3ub(168,204,215);
+
+      glVertex2f(0.113f, -0.115f);
+      glVertex2f(0.113f, -0.14f);
+      glVertex2f(0.155f, -0.14f);
+      glVertex2f(0.13f, -0.115f);
+
+
+      glEnd();
+
+
+
+      //head part
+
+       glBegin(GL_POLYGON);
+      glColor3ub(255, 0, 0);
+
+      glVertex2f(0.04f, -0.14f);
+      glVertex2f(0.015f, -0.17f);
+      glVertex2f(0.015f, -0.19f);
+
+      glVertex2f(0.04f, -0.19f);
+
+
+      glEnd();
+
+
+
+
+   //headlight
+      glBegin(GL_QUADS);
+      glColor3ub(204,204,0);
+
+      glVertex2f(0.015f, -0.17f);
+      glVertex2f(0.015f, -0.18f);
+      glVertex2f(0.029f, -0.18f);
+
+      glVertex2f(0.029f, -0.17f);
+
+
+      glEnd();
+
+      // back light
+       glBegin(GL_QUADS);
+      glColor3ub(255, 0, 0);
+
+      glVertex2f(0.19f, -0.18f);
+      glVertex2f(0.19f, -0.19f);
+      glVertex2f(0.196f, -0.19f);
+
+      glVertex2f(0.196f, -0.18f);
+
+
+      glEnd();
+
+       //Wheels
+    //backbumper
+
+     Circle(0.068f,-0.19f,0.0f,0.010f,0,0,0);
+     //front bumper
+    Circle(0.15f,-0.19f,0.0f,0.01f,0,0,0);
+glPopMatrix();
+
+
+
+}
+
+
+
+
+
+
+void fullView()
+{
+
    initState();
    axisDraw();
    ahsanMonjilView();
-   glFlush();
+
+//road and cars
+road();
+car();
+car_2();
+car_3();
+car_4();
+
+
+glFlush();
+
 }
 
 
@@ -448,7 +1010,7 @@ int main(int argc, char** argv) {
     glutCreateWindow("Ahsan Monjil");
     glutDisplayFunc(fullView);
     glutIdleFunc(Idle);
-    glutTimerFunc(100, update, 0);
+    glutTimerFunc(1500, update, 0);
     glutMainLoop();
     return 0;
 }

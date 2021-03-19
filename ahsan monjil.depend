@@ -223,3 +223,9 @@
 1341010374 e:\codeblocks\mingw\include\math.h
 	<_mingw.h>
 
+1616185658 source:c:\users\asus\desktop\ahsan-monjil-glut\main.cpp
+	<windows.h>
+	<iostream>
+	<GL/glut.h>
+	<math.h>
+
