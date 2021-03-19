@@ -1,9 +1,9 @@
 # depslib dependency file v1.0
-1616088292 source:f:\semester 10\cg\code\ahsan monjil\main.cpp
-	<GLUT/glut.h>
-	<GL/glut.h>
+1616149664 source:f:\semester 10\cg\code\ahsan monjil\main.cpp
 	<windows.h>
-	<stdlib.h>
+	<iostream>
+	<GL/glut.h>
+	<math.h>
 
 976692172 e:\codeblocks\mingw\include\gl\glut.h
 	<windows.h>
@@ -219,4 +219,7 @@
 1301111164 e:\codeblocks\mingw\include\gl\glu.h
 	<stddef.h>
 	<GL/gl.h>
+
+1341010374 e:\codeblocks\mingw\include\math.h
+	<_mingw.h>
 
