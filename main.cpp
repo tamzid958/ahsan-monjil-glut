@@ -173,7 +173,7 @@ void ahsanMonjilView(){
     glBegin(GL_LINES);
     glColor3ub(255, 99, 71);
     glVertex2f(-0.81f, 0.51f);
-    glVertex2f(0.81f, 0.51f);
+    glVertex2f(0.86f, 0.51f);
     glEnd();
 
 
