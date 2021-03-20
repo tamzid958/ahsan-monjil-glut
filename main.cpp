@@ -166,7 +166,22 @@ void threeDotComponent(){
    glEnd();
 }
 
+void anyQuad( float a, float b, float c, float d, float e, float f, float g, float h ){
+    glBegin(GL_QUADS);
+    //glColor3ub(178, 34, 34);
+    glVertex2f(a, b);
+    glVertex2f(c, d);
+    glVertex2f(e, f);
+    glVertex2f(g, h);
+    glEnd();
+}
 
+void lineComponent(float a, float b, float c, float d){
+   glBegin(GL_LINES);
+   glVertex2f(a, b);
+   glVertex2f(c, d);
+   glEnd();
+}
 
 
 
