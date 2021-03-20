@@ -51,15 +51,10 @@ void update(int value) {
 //make circle
 void Circle(GLfloat cx, GLfloat cy,GLfloat cz, GLfloat radius,int r,int g,int b)
 {
-	int triangleAmount = 40; //# of triangles used to draw circle
-	GLfloat twicePi = 2.0f * 3.1416;
-    int counter=0;
-
     glColor3ub(r,g,b);
 	glBegin(GL_TRIANGLE_FAN);
 		glVertex3f(cx, cy,cz); // center of circle
 		for(int i = 0; i <= triangleAmount;i++) {
-			counter+=1;
 			glVertex3f(
 		            cx + (radius * cos(i *  twicePi / triangleAmount)),
 			    cy + (radius * sin(i * twicePi / triangleAmount)),cz
