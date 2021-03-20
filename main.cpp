@@ -1065,7 +1065,7 @@ void fullView()
 {
    initState();
    axisDraw();
-    glLoadIdentity();
+    glLoadIdentity();//Mountain
     glColor3ub(10, 255, 100);
     glBegin(GL_POLYGON);
     glVertex2f(-1, 0.5);
@@ -1080,7 +1080,7 @@ void fullView()
     glVertex2f(-0.6, 0.63);
     glVertex2f(-0.7, 0.71);
     glVertex2f(-0.9, 0.59);
-    glEnd();
+    glEnd();//endOfMountain
    glLoadIdentity();
    anyQuad(-1, 0.1, -1, -0.2, 1, -0.2, 1, 0.1, 10, 255, 100);//Grass
    ahsanMonjilView();
