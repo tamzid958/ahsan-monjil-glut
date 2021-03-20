@@ -569,6 +569,181 @@ void ahsanMonjilView(){
     glEnd();
     glLineWidth(4);
 
+     //middleBody
+    glLoadIdentity();
+    glColor3ub(255, 99, 71);
+    anyQuad(-0.06, 0.54, -0.06, 0.3, 0.11, 0.3, 0.11, 0.54);
+    glLoadIdentity();
+
+    //mainDoor
+    glLoadIdentity();
+    glTranslatef(0.736, -0.1245, 0);
+    glScalef(1, 1.5, 0);
+    ovalWindowComponent(178, 34, 34);
+    glLoadIdentity();
+
+    //leftDoor
+    glLoadIdentity();
+    glTranslatef(0.32, -0.066, 0);
+    glScalef(0.5, 1.3, 0);
+    ovalWindowComponent(178, 34, 34);
+    glLoadIdentity();
+
+    //rightDoor
+    glLoadIdentity();
+    glTranslatef(0.44, -0.066, 0);
+    glScalef(0.5, 1.3, 0);
+    ovalWindowComponent(178, 34, 34);
+    glLoadIdentity();
+
+    //mainGombujhRight
+    glLoadIdentity();
+    glColor3ub(255, 99, 71);
+    glBegin(GL_POLYGON);
+    glVertex2f(-0.06, 0.655);
+    glVertex2f(0.025, 0.655);
+    glVertex2f(0.025, 0.8);
+    glVertex2f(0.0, 0.79);
+    glVertex2f(-0.025, 0.76);
+    glVertex2f(-0.04, 0.735);
+    glVertex2f(-0.05, 0.71);
+    glEnd();
+
+    glLoadIdentity();
+    glColor3ub(255, 99, 71);
+    anyQuad(0.02, 0.8, 0.03, 0.8, 0.027, 0.815, 0.023, 0.815);//topPoint
+    glLoadIdentity();
+
+    glLoadIdentity();
+    glColor3ub(0, 0, 0);
+    glLineWidth(2);
+    lineComponent(0.025, 0.815, 0.025, 0.83);
+    glLoadIdentity();
+
+    //mainGombujhLeft
+    glLoadIdentity();
+    glColor3ub(255, 99, 71);
+    glBegin(GL_POLYGON);
+    glVertex2f(0.11, 0.655);
+    glVertex2f(0.025, 0.655);
+    glVertex2f(0.025, 0.8);
+    glVertex2f(0.05, 0.79);
+    glVertex2f(0.075, 0.76);
+    glVertex2f(0.09, 0.735);
+    glVertex2f(0.10, 0.71);
+    glEnd();
+
+    glLoadIdentity();
+    glColor3ub(0, 0, 0);
+    glTranslatef(0, 0.02, 0);
+    glBegin(GL_POLYGON);
+    glVertex2f(-0.065, 0.63);
+    glVertex2f(-0.06, 0.54);
+    glVertex2f(0.11, 0.54);
+    glVertex2f(0.115, 0.63);
+    glVertex2f(0.085, 0.65);
+    glVertex2f(0.06, 0.66);
+    glVertex2f(0.025, 0.665);
+    glVertex2f(-0.005, 0.66);
+    glVertex2f(-0.03, 0.65);
+    glEnd();
+    glLoadIdentity();
+
+    glLoadIdentity();
+    glColor3ub(255, 99, 71);
+    glBegin(GL_POLYGON);
+    glVertex2f(-0.06, 0.63);
+    glVertex2f(-0.06, 0.54);
+    glVertex2f(0.11, 0.54);
+    glVertex2f(0.11, 0.63);
+    glVertex2f(0.085, 0.65);
+    glVertex2f(0.06, 0.66);
+    glVertex2f(0.025, 0.665);
+    glVertex2f(-0.005, 0.66);
+    glVertex2f(-0.03, 0.65);
+    glEnd();
+    glLoadIdentity();
+
+
+
+//middleLeftPillar
+    glLoadIdentity();
+    glColor3ub(255,140,0);
+    anyQuad(-0.09, 0.59, -0.084, 0.564, -0.062, 0.564, -0.057, 0.59);
+    glLoadIdentity();
+    glTranslatef(0.237, 0.24, 0);
+    glScalef(0.4, 0.64, 0);
+    pillarComponent();
+    glLoadIdentity();
+
+    //DecorLines
+    glLoadIdentity();
+    glColor3ub(255,140,0);
+    glLineWidth(5);
+    lineComponent(-0.015, 0.575, 0.062, 0.575);
+    glLoadIdentity();
+
+    glLoadIdentity();
+    glColor3ub(0,0,0);
+    glLineWidth(3);
+    lineComponent(-0.011, 0.57, -0.011, 0.48);
+    lineComponent(0.059, 0.57, 0.059, 0.48);
+    glLoadIdentity();
+
+    glLoadIdentity();
+    glColor3ub(0,0,0);
+    glLineWidth(2);
+    lineComponent(0.05, 0.57, 0.05, 0.5);
+    lineComponent(0.038, 0.57, 0.038, 0.52);
+    lineComponent(0.025, 0.57, 0.025, 0.54);
+    lineComponent(0.013, 0.57, 0.013, 0.52);
+    lineComponent(0.0, 0.57, 0.0, 0.5);
+    glLoadIdentity();
+
+    glLoadIdentity();
+    glColor3ub(255,140,0);
+    glLineWidth(3);
+    lineComponent(-0.06, 0.545, -0.013, 0.545);
+    lineComponent(0.064, 0.545, 0.11, 0.545);
+    glLoadIdentity();
+
+    glLoadIdentity();
+    glColor3ub(0,0,0);
+    glLineWidth(1);
+    lineComponent(-0.0525, 0.54, -0.0525, 0.52);
+    lineComponent(-0.04, 0.54, -0.04, 0.52);
+    lineComponent(-0.025, 0.54, -0.025, 0.52);
+    lineComponent(0.0725, 0.54, 0.0725, 0.52);
+    lineComponent(0.085, 0.54, 0.085, 0.52);
+    lineComponent(0.1, 0.54, 0.1, 0.52);
+    glLoadIdentity();
+
+    glLoadIdentity();
+    glColor3ub(0,0,0);
+    glLineWidth(3);
+    lineComponent(-0.05, 0.65, -0.05, 0.546);
+    lineComponent(-0.013, 0.67, -0.013, 0.58);
+    lineComponent(0.061, 0.67, 0.061, 0.58);
+    lineComponent(0.1, 0.65, 0.1, 0.543);
+    glLoadIdentity();
+
+    glLoadIdentity();//topDoor
+    glTranslatef(0.308, 0.49, 0);
+    glScalef(0.4, 0.3, 0);
+    ovalWindowComponent(178, 34, 34);
+    glLoadIdentity();
+
+//middleRightPillar
+    glLoadIdentity();
+    glColor3ub(255,140,0);
+    glTranslatef(0.197, 0, 0);
+    anyQuad(-0.09, 0.59, -0.084, 0.564, -0.062, 0.564, -0.057, 0.59);
+    glLoadIdentity();
+    glTranslatef(0.434, 0.24, 0);
+    glScalef(0.4, 0.64, 0);
+    pillarComponent();
+    glLoadIdentity();//end
+
     glLoadIdentity();
     glTranslatef(0.15, -0.09, 0);
     threeDotComponent();
