@@ -131,8 +131,8 @@ void gombujhComponent(){
   glEnd();
 }
 
-void squareWindowComponent(){
-    anyQuad(-0.69f, 0.4f, -0.69f, 0.3f, -0.73f, 0.3f, -0.73f, 0.4f, 178, 34, 34);
+void squareWindowComponent(int R, int G, int B){
+    anyQuad(-0.69f, 0.4f, -0.69f, 0.3f, -0.73f, 0.3f, -0.73f, 0.4f, R, G, B);
 }
 
 void ovalWindowComponent(int R, int G, int B){
@@ -153,7 +153,7 @@ void threeDotComponent(){
 }
 
 
-void GrassComponent(){
+void grassComponent(){
 
  anyQuad(-1, 0.1, -1, -0.2, 1, -0.2, 1, 0.1, 10, 255, 100);//Grass
 }
@@ -445,6 +445,42 @@ void car_4Component()
     glPopMatrix();
 }
 
+void buildingComponent(){
+
+    anyQuad(-0.7f , 0.7f, -0.7f, 0.3f, -0.9f, 0.3f, -0.9f, 0.7f, 255, 255, 255);
+
+    glLoadIdentity();
+    glTranslatef(-0.15f, 0.2f, 0);
+    squareWindowComponent(202, 164, 114);
+    glLoadIdentity();
+
+    glLoadIdentity();
+    glTranslatef(-0.09f, 0.2f, 0);
+    ovalWindowComponent(202, 164, 114);
+    glLoadIdentity();
+
+    glLoadIdentity();
+    glTranslatef(-0.03f, 0.2f, 0);
+    squareWindowComponent(202, 164, 114);
+    glLoadIdentity();
+
+
+    glLoadIdentity();
+    glTranslatef(-0.15f, 0.01f, 0);
+    squareWindowComponent(202, 164, 114);
+    glLoadIdentity();
+
+    glLoadIdentity();
+    glTranslatef(-0.09f, 0.01f, 0);
+    ovalWindowComponent(202, 164, 114);
+    glLoadIdentity();
+
+    glLoadIdentity();
+    glTranslatef(-0.03f, 0.01f, 0);
+    squareWindowComponent(202, 164, 114);
+    glLoadIdentity();
+}
+
 void ahsanMonjilView(){
 
     anyQuad(0.8f, 0.5f, 0.8f, 0.1f, -0.8f, 0.1f, -0.8f, 0.5f, 255, 99, 71);;
@@ -719,17 +755,17 @@ void ahsanMonjilView(){
     glLoadIdentity();
 
     glLoadIdentity();
-    squareWindowComponent();
+    squareWindowComponent(178, 34, 34);
     glLoadIdentity();
 
 //left windows
     glLoadIdentity();
-    squareWindowComponent();
+    squareWindowComponent(178, 34, 34);
     glLoadIdentity();
 
     glLoadIdentity();
     glTranslatef(0.07, 0, 0);
-    squareWindowComponent();
+    squareWindowComponent(178, 34, 34);
     glLoadIdentity();
 
     glLoadIdentity();
@@ -745,12 +781,12 @@ void ahsanMonjilView(){
 //right windows
     glLoadIdentity();
     glTranslatef(1.4, 0, 0);
-    squareWindowComponent();
+    squareWindowComponent(178, 34, 34);
     glLoadIdentity();
 
     glLoadIdentity();
     glTranslatef(1.47, 0, 0);
-    squareWindowComponent();
+    squareWindowComponent(178, 34, 34);
     glLoadIdentity();
 
     glLoadIdentity();
@@ -940,7 +976,7 @@ void roadView()
     car_4Component();
 }
 
-void MountainView(){
+void mountainView(){
 
     glLoadIdentity();//Mountain
     glColor3ub(10, 255, 100);
@@ -960,15 +996,20 @@ void MountainView(){
     glEnd();//endOfMountain
     glLoadIdentity();
 
-    GrassComponent();
+    grassComponent();
 }
 
+
+void buildingsView(){
+ buildingComponent();
+}
 
 void fullView()
 {
    initState();
    axisDraw();
-   MountainView();
+   mountainView();
+   buildingsView();
    ahsanMonjilView();
    roadView();
    glFlush();
