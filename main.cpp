@@ -166,9 +166,9 @@ void threeDotComponent(){
    glEnd();
 }
 
-void anyQuad( float a, float b, float c, float d, float e, float f, float g, float h ){
+void anyQuad( float a, float b, float c, float d, float e, float f, float g, float h, int R, int G, int B ){
     glBegin(GL_QUADS);
-    //glColor3ub(178, 34, 34);
+    glColor3ub(R, G, B);
     glVertex2f(a, b);
     glVertex2f(c, d);
     glVertex2f(e, f);
@@ -586,8 +586,8 @@ void ahsanMonjilView(){
 
      //middleBody
     glLoadIdentity();
-    glColor3ub(255, 99, 71);
-    anyQuad(-0.06, 0.54, -0.06, 0.3, 0.11, 0.3, 0.11, 0.54);
+    //glColor3ub(255, 99, 71);
+    anyQuad(-0.06, 0.54, -0.06, 0.3, 0.11, 0.3, 0.11, 0.54, 255, 99, 71);
     glLoadIdentity();
 
     //mainDoor
@@ -625,8 +625,8 @@ void ahsanMonjilView(){
     glEnd();
 
     glLoadIdentity();
-    glColor3ub(255, 99, 71);
-    anyQuad(0.02, 0.8, 0.03, 0.8, 0.027, 0.815, 0.023, 0.815);//topPoint
+    //glColor3ub(255, 99, 71);
+    anyQuad(0.02, 0.8, 0.03, 0.8, 0.027, 0.815, 0.023, 0.815, 255, 99, 71);//topPoint
     glLoadIdentity();
 
     glLoadIdentity();
@@ -649,7 +649,7 @@ void ahsanMonjilView(){
     glEnd();
 
     glLoadIdentity();
-    glColor3ub(0, 0, 0);
+    glColor3ub(0, 0, 0);//gombuhjMiddleBorder
     glTranslatef(0, 0.02, 0);
     glBegin(GL_POLYGON);
     glVertex2f(-0.065, 0.63);
@@ -665,7 +665,7 @@ void ahsanMonjilView(){
     glLoadIdentity();
 
     glLoadIdentity();
-    glColor3ub(255, 99, 71);
+    glColor3ub(255, 99, 71);//lowerPartOfGombujh
     glBegin(GL_POLYGON);
     glVertex2f(-0.06, 0.63);
     glVertex2f(-0.06, 0.54);
@@ -683,8 +683,8 @@ void ahsanMonjilView(){
 
 //middleLeftPillar
     glLoadIdentity();
-    glColor3ub(255,140,0);
-    anyQuad(-0.09, 0.59, -0.084, 0.564, -0.062, 0.564, -0.057, 0.59);
+    //glColor3ub(255,140,0);
+    anyQuad(-0.09, 0.59, -0.084, 0.564, -0.062, 0.564, -0.057, 0.59, 255,140,0);
     glLoadIdentity();
     glTranslatef(0.237, 0.24, 0);
     glScalef(0.4, 0.64, 0);
@@ -750,9 +750,9 @@ void ahsanMonjilView(){
 
 //middleRightPillar
     glLoadIdentity();
-    glColor3ub(255,140,0);
+    //glColor3ub(255,140,0);
     glTranslatef(0.197, 0, 0);
-    anyQuad(-0.09, 0.59, -0.084, 0.564, -0.062, 0.564, -0.057, 0.59);
+    anyQuad(-0.09, 0.59, -0.084, 0.564, -0.062, 0.564, -0.057, 0.59, 255,140,0);
     glLoadIdentity();
     glTranslatef(0.434, 0.24, 0);
     glScalef(0.4, 0.64, 0);
@@ -1065,6 +1065,24 @@ void fullView()
 {
    initState();
    axisDraw();
+    glLoadIdentity();//Mountain
+    glColor3ub(10, 255, 100);
+    glBegin(GL_POLYGON);
+    glVertex2f(-1, 0.5);
+    glVertex2f(1, 0.5);
+    glVertex2f(0.9, 0.7);
+    glVertex2f(0.8, 0.55);
+    glVertex2f(0.5, 0.75);
+    glVertex2f(0.3, 0.55);
+    glVertex2f(0.1, 0.88);
+    glVertex2f(-0.1, 0.66);
+    glVertex2f(-0.3, 0.79);
+    glVertex2f(-0.6, 0.63);
+    glVertex2f(-0.7, 0.71);
+    glVertex2f(-0.9, 0.59);
+    glEnd();//endOfMountain
+   glLoadIdentity();
+   anyQuad(-1, 0.1, -1, -0.2, 1, -0.2, 1, 0.1, 10, 255, 100);//Grass
    ahsanMonjilView();
    roadView();
    glFlush();
