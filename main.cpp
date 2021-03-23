@@ -1033,7 +1033,7 @@ void roadView()
 void mountainView(){
 
     glLoadIdentity();//Mountain
-    glColor3ub(10, 255, 100);
+    glColor3ub(15, 114, 22);
     glBegin(GL_POLYGON);
     glVertex2f(-1, 0.5);
     glVertex2f(1, 0.5);
