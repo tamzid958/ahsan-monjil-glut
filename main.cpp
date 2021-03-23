@@ -64,6 +64,22 @@ void Circle(GLfloat cx, GLfloat cy,GLfloat cz, GLfloat radius,int r,int g,int b)
 }
 
 
+void anyQuad( float a, float b, float c, float d, float e, float f, float g, float h, int R, int G, int B ){
+    glBegin(GL_QUADS);
+    glColor3ub(R, G, B);
+    glVertex2f(a, b);
+    glVertex2f(c, d);
+    glVertex2f(e, f);
+    glVertex2f(g, h);
+    glEnd();
+}
+
+void lineComponent(float a, float b, float c, float d){
+   glBegin(GL_LINES);
+   glVertex2f(a, b);
+   glVertex2f(c, d);
+   glEnd();
+}
 
 void Idle()
 {
@@ -88,22 +104,9 @@ void axisDraw(){
 }
 void pillarComponent(){
 
-    glBegin(GL_QUADS);
-    glColor3ub(255,140,0);
-    glVertex2f(-0.75f, 0.5f);
-    glVertex2f(-0.75f, 0.1f);
-    glVertex2f(-0.8f, 0.1f);
-    glVertex2f(-0.8f, 0.5f);
-    glEnd();
+    anyQuad(-0.75f, 0.5f, -0.75f, 0.1f, -0.8f, 0.1f, -0.8f, 0.5f, 255, 140, 0);
 
-
-    glBegin(GL_QUADS);
-    glColor3ub(255,140,0);
-    glVertex2f(-0.755f, 0.55f);
-    glVertex2f(-0.755f, 0.5f);
-    glVertex2f(-0.795f, 0.5f);
-    glVertex2f(-0.795f, 0.55f);
-    glEnd();
+    anyQuad(-0.755f, 0.55f, -0.755f, 0.5f, -0.795f, 0.5f, -0.795f, 0.55f, 255, 140, 0);
 
     Circle(-.775f,.55f,0.0f,.02f,255,140,0);
 
@@ -117,13 +120,8 @@ void pillarComponent(){
 }
 
 void gombujhComponent(){
-  glBegin(GL_QUADS);
-  glColor3ub(255,140,0);
-  glVertex2f(-0.6f, 0.57f);
-  glVertex2f(-0.6f, 0.52f);
-  glVertex2f(-0.75f, 0.52f);
-  glVertex2f(-0.75f, 0.57f);
-  glEnd();
+
+  anyQuad(-0.6f, 0.57f, -0.6f, 0.52f, -0.75f, 0.52f, -0.75f, 0.57f, 255, 140, 0);
 
   Circle(-.68f, .56f, 0.0f, .045f, 255, 140, 0);
 
@@ -134,27 +132,15 @@ void gombujhComponent(){
 }
 
 void squareWindowComponent(){
-    glBegin(GL_QUADS);
-    glColor3ub(178, 34, 34);
-    glVertex2f(-0.69f, 0.4f);
-    glVertex2f(-0.69f, 0.3f);
-    glVertex2f(-0.73f, 0.3f);
-    glVertex2f(-0.73f, 0.4f);
-    glEnd();
+    anyQuad(-0.69f, 0.4f, -0.69f, 0.3f, -0.73f, 0.3f, -0.73f, 0.4f, 178, 34, 34);
 }
 
 void ovalWindowComponent(int R, int G, int B){
-
-    glBegin(GL_QUADS);
-    glColor3ub(R, G, B);
-    glVertex2f(-0.69f, 0.4f);
-    glVertex2f(-0.69f, 0.3f);
-    glVertex2f(-0.73f, 0.3f);
-    glVertex2f(-0.73f, 0.4f);
-    glEnd();
-
+    anyQuad(-0.69f, 0.4f, -0.69f, 0.3f, -0.73f, 0.3f, -0.73f, 0.4f, R, G, B);
     Circle(-.71f, .4f, 0.0f, .021f, R, G, B);
 }
+
+
 
 
 void threeDotComponent(){
@@ -166,24 +152,11 @@ void threeDotComponent(){
    glEnd();
 }
 
-void anyQuad( float a, float b, float c, float d, float e, float f, float g, float h, int R, int G, int B ){
-    glBegin(GL_QUADS);
-    glColor3ub(R, G, B);
-    glVertex2f(a, b);
-    glVertex2f(c, d);
-    glVertex2f(e, f);
-    glVertex2f(g, h);
-    glEnd();
+
+void GrassComponent(){
+
+ anyQuad(-1, 0.1, -1, -0.2, 1, -0.2, 1, 0.1, 10, 255, 100);//Grass
 }
-
-void lineComponent(float a, float b, float c, float d){
-   glBegin(GL_LINES);
-   glVertex2f(a, b);
-   glVertex2f(c, d);
-   glEnd();
-}
-
-
 
 void carComponent()
 {
@@ -249,17 +222,7 @@ void car_2Component()
     glPushMatrix();
     glTranslatef(car_position,0,0);
 
-    glBegin(GL_QUADS);
-    glColor3ub(255, 77, 255);
-
-    glVertex2f(0.025f, 0.001f);
-    glVertex2f(0.025f, -0.045f);
-    glVertex2f(0.222f, -0.045f);
-
-    glVertex2f(0.222f, 0.001f);
-
-
-    glEnd();
+    anyQuad(0.025f, 0.001f,0.025f, -0.045f, 0.222f, -0.045f, 0.222f, 0.001f, 255, 77, 255);
 
     //glass part of car
 
@@ -310,31 +273,12 @@ void car_2Component()
     glEnd();
 
 
+
     //headlight
-    glBegin(GL_QUADS);
-    glColor3ub(204,204,0);
-
-    glVertex2f(0.233f, -0.033f);
-    glVertex2f(0.233f, -0.038f);
-    glVertex2f(0.252f, -0.038f);
-
-    glVertex2f(0.252f, -0.033f);
-
-
-    glEnd();
+    anyQuad(0.233f, -0.033f, 0.233f, -0.038f, 0.252f, -0.038f, 0.252f, -0.033f, 204, 204, 0);
 
     // back light
-    glBegin(GL_QUADS);
-    glColor3ub(255, 77, 255);
-
-    glVertex2f(0.015f, -0.035f);
-    glVertex2f(0.015f, -0.045f);
-    glVertex2f(0.025f, -0.045f);
-
-    glVertex2f(0.025f, -0.035f);
-
-
-    glEnd();
+    anyQuad(0.015f, -0.035f, 0.015f, -0.045f, 0.025f, -0.045f, 0.025f, -0.035f, 255, 77, 255);
 
     //Wheels
     //backbumper
@@ -350,17 +294,8 @@ void car_3Component()
     glPushMatrix();
     glTranslatef(car3_pos,0,0);
 
-    glBegin(GL_QUADS);
-    glColor3ub(0, 128, 0);
 
-    glVertex2f(0.04f, -0.14f);
-    glVertex2f(0.04f, -0.19f);
-    glVertex2f(0.19f, -0.19f);
-
-    glVertex2f(0.19f, -0.14f);
-
-
-    glEnd();
+    anyQuad(0.04f, -0.14f, 0.04f, -0.19f, 0.19f, -0.19f, 0.19f, -0.14f, 0, 128, 0);
 
     //glass part of car
 
@@ -422,30 +357,12 @@ void car_3Component()
     glEnd();
 
     //headlight
-    glBegin(GL_QUADS);
-    glColor3ub(204,204,0);
 
-    glVertex2f(0.015f, -0.17f);
-    glVertex2f(0.015f, -0.18f);
-    glVertex2f(0.029f, -0.18f);
-
-    glVertex2f(0.029f, -0.17f);
-
-
-    glEnd();
+    anyQuad(0.015f, -0.17f, 0.015f, -0.18f, 0.029f, -0.18f, 0.029f, -0.17f, 204, 204, 0);
 
     // back light
-    glBegin(GL_QUADS);
-    glColor3ub(0, 128, 0);
 
-    glVertex2f(0.19f, -0.18f);
-    glVertex2f(0.19f, -0.19f);
-    glVertex2f(0.196f, -0.19f);
-
-    glVertex2f(0.196f, -0.18f);
-
-
-    glEnd();
+    anyQuad(0.19f, -0.18f, 0.19f, -0.19f, 0.196f, -0.19f, 0.196f, -0.18f, 0, 128, 0);
 
     //Wheels
     //backbumper
@@ -462,18 +379,7 @@ void car_4Component()
     glPushMatrix();
     glTranslatef(car4_pos,0,0);
 
-    glBegin(GL_QUADS);
-    glColor3ub(255, 0, 0);
-
-    glVertex2f(0.04f, -0.14f);
-    glVertex2f(0.04f, -0.19f);
-    glVertex2f(0.19f, -0.19f);
-
-    glVertex2f(0.19f, -0.14f);
-
-
-    glEnd();
-
+    anyQuad(0.04f, -0.14f, 0.04f, -0.19f, 0.19f, -0.19f, 0.19f, -0.14f, 255, 0, 0);
     //glass part of car
 
     glBegin(GL_POLYGON);
@@ -525,30 +431,10 @@ void car_4Component()
     glEnd();
 
     //headlight
-    glBegin(GL_QUADS);
-    glColor3ub(204,204,0);
-
-    glVertex2f(0.015f, -0.17f);
-    glVertex2f(0.015f, -0.18f);
-    glVertex2f(0.029f, -0.18f);
-
-    glVertex2f(0.029f, -0.17f);
-
-
-    glEnd();
+    anyQuad(0.015f, -0.17f, 0.015f, -0.18f, 0.029f, -0.18f, 0.029f, -0.17f, 204, 204, 0);
 
     // back light
-    glBegin(GL_QUADS);
-    glColor3ub(255, 0, 0);
-
-    glVertex2f(0.19f, -0.18f);
-    glVertex2f(0.19f, -0.19f);
-    glVertex2f(0.196f, -0.19f);
-
-    glVertex2f(0.196f, -0.18f);
-
-
-    glEnd();
+    anyQuad(0.19f, -0.18f,0.19f, -0.19f, 0.196f, -0.19f, 0.196f, -0.18f, 255, 0, 0);
 
     //Wheels
     //backbumper
@@ -561,13 +447,7 @@ void car_4Component()
 
 void ahsanMonjilView(){
 
-    glBegin(GL_QUADS);
-    glColor3ub(255, 99, 71);
-    glVertex2f(0.8f,0.5f);
-    glVertex2f(0.8f,0.1f);
-    glVertex2f(-0.8f,0.1f);
-    glVertex2f(-0.8f,0.5f);
-    glEnd();
+    anyQuad(0.8f, 0.5f, 0.8f, 0.1f, -0.8f, 0.1f, -0.8f, 0.5f, 255, 99, 71);;
 
     glBegin(GL_LINES);
     glColor3ub(255, 99, 71);
@@ -1060,11 +940,8 @@ void roadView()
     car_4Component();
 }
 
+void MountainView(){
 
-void fullView()
-{
-   initState();
-   axisDraw();
     glLoadIdentity();//Mountain
     glColor3ub(10, 255, 100);
     glBegin(GL_POLYGON);
@@ -1081,8 +958,17 @@ void fullView()
     glVertex2f(-0.7, 0.71);
     glVertex2f(-0.9, 0.59);
     glEnd();//endOfMountain
-   glLoadIdentity();
-   anyQuad(-1, 0.1, -1, -0.2, 1, -0.2, 1, 0.1, 10, 255, 100);//Grass
+    glLoadIdentity();
+
+    GrassComponent();
+}
+
+
+void fullView()
+{
+   initState();
+   axisDraw();
+   MountainView();
    ahsanMonjilView();
    roadView();
    glFlush();
