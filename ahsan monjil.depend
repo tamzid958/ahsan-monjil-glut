@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1616503911 source:f:\semester 10\cg\code\ahsan monjil\main.cpp
+1616529223 source:f:\semester 10\cg\code\ahsan monjil\main.cpp
 	<windows.h>
 	<iostream>
 	<GL/glut.h>

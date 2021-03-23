@@ -532,102 +532,7 @@ void buildingComponent(){
     squareWindowComponent(202, 164, 114);
     glLoadIdentity();
 
-    glTranslatef(0.03f, 0.1f, 0);//TallBuilding1
-    glScalef(0.5, 1.1, 0);
-    anyQuad(-0.7f , 0.7f, -0.7f, 0.3f, -0.9f, 0.3f, -0.9f, 0.7f, 163, 163, 117);
-    glLoadIdentity();
 
-    float wp1 = -0.195, wp2 = 0.755;
-    for(int w = 0; w < 5; w++)
-        {
-            for(int wj = 0; wj < 8; wj++){
-             glLoadIdentity();//smallWindowsTallBuilding1
-             glTranslatef(wp1, wp2, 0);
-             glScalef(0.3, 0.25, 0);
-             squareWindowComponent(0, 0, 0);
-             glLoadIdentity();
-             wp2 -= 0.045;
-            }
-            wp2 = 0.755;
-            wp1 += 0.018;
-        }
-
-    glLoadIdentity();
-    //tallBuilding2
-    glTranslatef(0.13f, 0.1f, 0);
-    glScalef(0.4, 1.05, 0);
-    anyQuad(-0.7f , 0.7f, -0.7f, 0.3f, -0.9f, 0.3f, -0.9f, 0.7f, 194, 194, 163);
-    glLoadIdentity();
-
-    wp1 = -0.04, wp2 = 0.745;
-    for(int w = 0; w < 4; w++)
-        {
-            for(int wj = 0; wj < 7; wj++){
-             glLoadIdentity();//smallWindowsTallBuilding2
-             glTranslatef(wp1, wp2, 0);
-             glScalef(0.25, 0.2, 0);
-             squareWindowComponent(0, 0, 0);
-             glLoadIdentity();
-             wp2 -= 0.045;
-            }
-            wp2 = 0.745;
-            wp1 += 0.018;
-        }
-
-    glLoadIdentity();
-    anyTriangle(0.228, 0.85, 0.2905, 0.85, 0.26, 0.9, 179, 119, 0);//tallBuilding3
-    glTranslatef(0.5f, 0.1f, 0);
-    glScalef(0.3, 1.08, 0);
-    anyQuad(-0.7f , 0.7f, -0.7f, 0.3f, -0.9f, 0.3f, -0.9f, 0.7f, 179, 119, 0);
-    glLoadIdentity();
-
-    wp1 = 0.405, wp2 = 0.75;
-    for(int w = 0; w < 3; w++)
-        {
-            for(int wj = 0; wj < 7; wj++){
-             glLoadIdentity();//smallWindowsTallBuilding3
-             glTranslatef(wp1, wp2, 0);
-             glScalef(0.23, 0.18, 0);
-             squareWindowComponent(0, 0, 0);
-             glLoadIdentity();
-             wp2 -= 0.045;
-            }
-            wp2 = 0.75;
-            wp1 += 0.018;
-        }
-
-        glLoadIdentity();
-    //smallBuilding2
-    glTranslatef(1.4f, 0.1f, 0);
-    glScalef(0.6, 0.8, 0);
-    anyQuad(-0.7f , 0.7f, -0.7f, 0.3f, -0.9f, 0.3f, -0.9f, 0.7f, 255, 255, 179);
-    glLoadIdentity();
-
-    wp1 = 1.275, wp2 = 0.4;
-
-            for(int wj = 0; wj < 3; wj++){
-             glLoadIdentity();//smallWindowsSmallBuilding2
-             glTranslatef(wp1, wp2, 0);
-             glScalef(0.5, 0.5, 0);
-             ovalWindowComponent(202, 164, 114);
-             glLoadIdentity();
-             wp2 -= 0.1;
-            }
-
-            wp1 = 1.382, wp2 = 0.53;
-    for(int w = 0; w < 2; w++)
-        {
-            for(int wj = 0; wj < 3; wj++){
-             glLoadIdentity();//smallWindowsTallBuilding3
-             glTranslatef(wp1, wp2, 0);
-             glScalef(0.7, 0.2, 0);
-             squareWindowComponent(202, 164, 114);
-             glLoadIdentity();
-             wp2 -= 0.1;
-            }
-            wp2 = 0.53;
-            wp1 += 0.068;
-        }
 }
 
 void ahsanMonjilView(){
@@ -1151,6 +1056,107 @@ void mountainView(){
 
 void buildingsView(){
  buildingComponent();
+     glTranslatef(0.03f, 0.1f, 0);//TallBuilding1
+    glScalef(0.5, 1.1, 0);
+    anyQuad(-0.7f , 0.7f, -0.7f, 0.3f, -0.9f, 0.3f, -0.9f, 0.7f, 163, 163, 117);
+    glLoadIdentity();
+
+    float wp1 = -0.195, wp2 = 0.755;
+    for(int w = 0; w < 5; w++)
+        {
+            for(int wj = 0; wj < 8; wj++){
+             glLoadIdentity();//smallWindowsTallBuilding1
+             glTranslatef(wp1, wp2, 0);
+             glScalef(0.3, 0.25, 0);
+             squareWindowComponent(0, 0, 0);
+             glLoadIdentity();
+             wp2 -= 0.045;
+            }
+            wp2 = 0.755;
+            wp1 += 0.018;
+        }
+
+    glLoadIdentity();
+    //tallBuilding2
+    glTranslatef(0.13f, 0.1f, 0);
+    glScalef(0.4, 1.05, 0);
+    anyQuad(-0.7f , 0.7f, -0.7f, 0.3f, -0.9f, 0.3f, -0.9f, 0.7f, 194, 194, 163);
+    glLoadIdentity();
+
+    wp1 = -0.04, wp2 = 0.745;
+    for(int w = 0; w < 4; w++)
+        {
+            for(int wj = 0; wj < 7; wj++){
+             glLoadIdentity();//smallWindowsTallBuilding2
+             glTranslatef(wp1, wp2, 0);
+             glScalef(0.25, 0.2, 0);
+             squareWindowComponent(0, 0, 0);
+             glLoadIdentity();
+             wp2 -= 0.045;
+            }
+            wp2 = 0.745;
+            wp1 += 0.018;
+        }
+
+    glLoadIdentity();
+    anyTriangle(0.228, 0.85, 0.2905, 0.85, 0.26, 0.9, 179, 119, 0);//tallBuilding3
+    glTranslatef(0.5f, 0.1f, 0);
+    glScalef(0.3, 1.08, 0);
+    anyQuad(-0.7f , 0.7f, -0.7f, 0.3f, -0.9f, 0.3f, -0.9f, 0.7f, 179, 119, 0);
+    glLoadIdentity();
+
+    wp1 = 0.405, wp2 = 0.75;
+    for(int w = 0; w < 3; w++)
+        {
+            for(int wj = 0; wj < 7; wj++){
+             glLoadIdentity();//smallWindowsTallBuilding3
+             glTranslatef(wp1, wp2, 0);
+             glScalef(0.23, 0.18, 0);
+             squareWindowComponent(0, 0, 0);
+             glLoadIdentity();
+             wp2 -= 0.045;
+            }
+            wp2 = 0.75;
+            wp1 += 0.018;
+        }
+
+        glLoadIdentity();
+    //smallBuilding2
+    glTranslatef(1.4f, 0.1f, 0);
+    glScalef(0.6, 0.8, 0);
+    anyQuad(-0.7f , 0.7f, -0.7f, 0.3f, -0.9f, 0.3f, -0.9f, 0.7f, 255, 255, 179);
+    glLoadIdentity();
+
+    wp1 = 1.275, wp2 = 0.4;
+
+            for(int wj = 0; wj < 3; wj++){
+             glLoadIdentity();//smallWindowsSmallBuilding2
+             glTranslatef(wp1, wp2, 0);
+             glScalef(0.5, 0.5, 0);
+             ovalWindowComponent(202, 164, 114);
+             glLoadIdentity();
+             wp2 -= 0.1;
+            }
+
+            wp1 = 1.382, wp2 = 0.53;
+    for(int w = 0; w < 2; w++)
+        {
+            for(int wj = 0; wj < 3; wj++){
+             glLoadIdentity();//smallWindowsTallBuilding3
+             glTranslatef(wp1, wp2, 0);
+             glScalef(0.7, 0.2, 0);
+             squareWindowComponent(202, 164, 114);
+             glLoadIdentity();
+             wp2 -= 0.1;
+            }
+            wp2 = 0.53;
+            wp1 += 0.068;
+        }
+}
+
+
+void desertView(){
+    anyQuad(1.0f, 0.5f, 1.0f, 0.1f, -1.0f, 0.1f, -1.0f, 0.5f, 76, 70, 50);
 }
 
 void fullView()
@@ -1158,6 +1164,7 @@ void fullView()
    initState();
    axisDraw();
    mountainView();
+   desertView();
    buildingsView();
    ahsanMonjilView();
    roadView();
