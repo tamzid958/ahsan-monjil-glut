@@ -47,6 +47,50 @@ void update(int value) {
 }
 
 
+void handleMouse(int button, int state, int x, int y) {
+	if (button == GLUT_LEFT_BUTTON)
+        {
+			speed += 0.1f;
+        }
+    if (button == GLUT_RIGHT_BUTTON)
+        {
+            speed -= 0.1f;
+        }
+	glutPostRedisplay();
+
+}
+
+void handleKeypress(unsigned char key, int x, int y) {
+	switch (key)
+	{
+        case 'p':
+            speed = 0.0f;
+            break;
+        case 'r':
+            speed = 0.1f;
+            break;
+        glutPostRedisplay();
+	}
+}
+
+void SpecialInput(int key, int x, int y)
+{
+    switch(key)
+    {
+        case GLUT_KEY_UP:
+            speed=.5;
+            break;
+        case GLUT_KEY_DOWN:
+            speed=.2;
+            break;
+        case GLUT_KEY_LEFT:
+            break;
+        case GLUT_KEY_RIGHT:
+            break;
+        }
+    glutPostRedisplay();
+}
+
 
 //make circle
 void Circle(GLfloat cx, GLfloat cy,GLfloat cz, GLfloat radius,int r,int g,int b)
