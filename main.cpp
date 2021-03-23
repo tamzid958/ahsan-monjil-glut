@@ -1067,6 +1067,9 @@ int main(int argc, char** argv) {
     glutCreateWindow("Ahsan Monjil");
     glutDisplayFunc(fullView);
     glutIdleFunc(Idle);
+    glutKeyboardFunc(handleKeypress);
+    glutMouseFunc(handleMouse);
+    glutSpecialFunc(SpecialInput);
     glutTimerFunc(1500, update, 0);
     glutMainLoop();
     return 0;
