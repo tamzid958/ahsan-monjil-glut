@@ -50,11 +50,11 @@ void update(int value) {
 void handleMouse(int button, int state, int x, int y) {
 	if (button == GLUT_LEFT_BUTTON)
         {
-			speed += 0.1f;
+			car_speed += 0.1f;
         }
     if (button == GLUT_RIGHT_BUTTON)
         {
-            speed -= 0.1f;
+            car_speed -= 0.1f;
         }
 	glutPostRedisplay();
 
@@ -64,11 +64,17 @@ void handleKeypress(unsigned char key, int x, int y) {
 	switch (key)
 	{
         case 'p':
-            speed = 0.0f;
+            car_speed = 0.0f;
             break;
         case 'r':
-            speed = 0.1f;
+            car_speed = 0.1f;
             break;
+        case 'n':
+            glClearColor(0.0f, 0.0f,0.0f,0.0f);
+            break;
+
+
+
         glutPostRedisplay();
 	}
 }
@@ -78,10 +84,10 @@ void SpecialInput(int key, int x, int y)
     switch(key)
     {
         case GLUT_KEY_UP:
-            speed=.5;
+            car_speed=.5;
             break;
         case GLUT_KEY_DOWN:
-            speed=.2;
+            car_speed=.2;
             break;
         case GLUT_KEY_LEFT:
             break;
@@ -140,10 +146,14 @@ void Idle()
 
 void initState(){
     glClearColor(0.5f, 1.0f, 1.0f, 0.0f);
+
+
+
     glClear(GL_COLOR_BUFFER_BIT);
     glLineWidth(4);
     glPointSize(7);
 }
+
 
 void axisDraw(){
     glBegin(GL_LINES);
@@ -1182,6 +1192,7 @@ int main(int argc, char** argv) {
     glutKeyboardFunc(handleKeypress);
     glutMouseFunc(handleMouse);
     glutSpecialFunc(SpecialInput);
+
     glutTimerFunc(1500, update, 0);
     glutMainLoop();
     return 0;
