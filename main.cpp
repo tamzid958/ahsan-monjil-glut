@@ -994,8 +994,8 @@ void water()
      glBegin(GL_QUADS);
     glColor3ub(2, 141, 224);
 	glVertex2f(-1.0f, -0.2f);    // x, y
-    glVertex2f(-1.0f,-0.8f);
-    glVertex2f(1.0, -0.8);// x, y
+    glVertex2f(-1.0f,-1);
+    glVertex2f(1.0, -1);// x, y
 	glVertex2f(1.0f, -0.2); // x, y
 	glEnd();
   glBegin(GL_POLYGON);
@@ -1040,6 +1040,10 @@ void water()
 
 
     //boat
+
+    glPushMatrix();
+    glTranslatef(car4_pos,0,0);
+
     glBegin(GL_QUADS);
     glColor3ub(41, 34, 31);
     glVertex2f(0.0f, -0.7f);    // x, y
@@ -1200,6 +1204,8 @@ void water()
     glVertex2f(0.65f, -0.3f);
     glVertex2f(0.64f,-0.4f);    // x, y
 	glEnd();
+
+	glPopMatrix();
 }
 
 
