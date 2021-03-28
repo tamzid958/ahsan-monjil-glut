@@ -1,3 +1,6 @@
-ahsan monjil.layout
-bin/Debug/*
-bin/Release/*
+*.layout
+*.depend
+*.o
+*.exe
+bin/
+obj/
