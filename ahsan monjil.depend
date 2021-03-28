@@ -235,3 +235,9 @@
 	<GL/glut.h>
 	<math.h>
 
+1616856756 source:g:\cg project\ahsan-monjil-glut\main.cpp
+	<windows.h>
+	<iostream>
+	<GL/glut.h>
+	<math.h>
+

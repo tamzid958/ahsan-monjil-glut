@@ -979,6 +979,218 @@ void ahsanMonjilView(){
 
 }
 
+void water()
+{
+     glBegin(GL_QUADS);
+    glColor3ub(2, 141, 224);
+	glVertex2f(-1.0f, -0.2f);    // x, y
+    glVertex2f(-1.0f,-0.8f);
+    glVertex2f(1.0, -0.8);// x, y
+	glVertex2f(1.0f, -0.2); // x, y
+	glEnd();
+  glBegin(GL_POLYGON);
+    glColor3ub(2, 120, 191);
+    glVertex2f(1.0f, -0.8f);
+    glVertex2f(-1.0f, -0.8f);
+    glVertex2f(-1.0f, -0.8f);
+    glVertex2f(-0.8f, -0.8f);
+    glVertex2f(-0.6f, -0.7f);
+    glVertex2f(-0.4f, -0.7f);
+    glVertex2f(-0.2f, -0.8f);
+    glVertex2f(-0.0f, -0.7f);
+    glVertex2f(0.2f, -0.7f);
+    glVertex2f(0.4f, -0.8f);
+    glVertex2f(0.6f, -0.8f);
+    glVertex2f(0.8f, -0.7f);
+    glVertex2f(1.0f, -0.7f);
+    glEnd();
+
+	//waves
+    glBegin(GL_LINE_STRIP);
+    glColor3ub(2, 120, 191);
+    glVertex2f(1.0f, -0.8f);
+    glVertex2f(-1.0f, -0.8f);
+    glVertex2f(-1.0f, -0.7f);
+    glVertex2f(-0.8f, -0.8f);
+    glVertex2f(-0.6f, -0.7f);
+    glVertex2f(-0.4f, -0.7f);
+    glVertex2f(-0.2f, -0.8f);
+    glVertex2f(-0.0f, -0.7f);
+    glVertex2f(0.2f, -0.7f);
+    glVertex2f(0.4f, -0.8f);
+    glVertex2f(0.6f, -0.8f);
+    glVertex2f(0.8f, -0.7f);
+    glVertex2f(1.0f, -0.7f);
+    glEnd();
+
+
+
+
+
+
+
+    //boat
+    glBegin(GL_QUADS);
+    glColor3ub(41, 34, 31);
+    glVertex2f(0.0f, -0.7f);    // x, y
+    glVertex2f(0.1f,-0.8f);
+    glVertex2f(0.7f, -0.8f);
+    glVertex2f(0.8f,-0.7f);    // x, y
+	glEnd();
+
+//ship floor
+    glBegin(GL_QUADS);
+    glColor3ub(179, 179, 179);
+    glVertex2f(0.1f, -0.55f);    // x, y
+    glVertex2f(0.1f,-0.7f);
+    glVertex2f(0.7f, -0.7f);
+    glVertex2f(0.7f,-0.55f);    // x, y
+	glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3ub(255, 255, 255);
+    glVertex2f(0.15f, -0.65f);    // x, y
+    glVertex2f(0.15f,-0.6f);
+    glVertex2f(0.35f, -0.6f);
+    glVertex2f(0.35f,-0.65f);    // x, y
+	glEnd();
+
+
+	glBegin(GL_LINES);
+    glColor3ub(31, 31, 31);
+    glVertex2f(0.2f, -0.65f);    // x, y
+    glVertex2f(0.2f,-0.6f);
+	glEnd();
+
+	glBegin(GL_LINES);
+    glColor3ub(31, 31, 31);
+    glVertex2f(0.25f, -0.65f);    // x, y
+    glVertex2f(0.25,-0.6f);
+	glEnd();
+
+	glBegin(GL_LINES);
+    glColor3ub(31, 31, 31);
+    glVertex2f(0.3f, -0.65f);    // x, y
+    glVertex2f(0.3f,-0.6f);
+	glEnd();
+
+
+
+
+	glBegin(GL_QUADS);
+    glColor3ub(255, 255, 255);
+    glVertex2f(0.4f, -0.65f);    // x, y
+    glVertex2f(0.4f,-0.6f);
+    glVertex2f(0.55f, -0.6f);
+    glVertex2f(0.55,-0.65f);    // x, y
+	glEnd();
+
+
+    glBegin(GL_LINES);
+    glColor3ub(31, 31, 31);
+    glVertex2f(0.45f, -0.65f);    // x, y
+    glVertex2f(0.45f,-0.6f);
+	glEnd();
+
+	glBegin(GL_LINES);
+    glColor3ub(31, 31, 31);
+    glVertex2f(0.5f, -0.65f);    // x, y
+    glVertex2f(0.5f,-0.6f);
+	glEnd();
+
+
+    glBegin(GL_QUADS);
+    glColor3ub(255, 255, 255);
+    glVertex2f(0.6f, -0.65f);    // x, y
+    glVertex2f(0.6f,-0.6f);
+    glVertex2f(0.65f, -0.6f);
+    glVertex2f(0.65,-0.65f);    // x, y
+	glEnd();
+
+//chimneys
+  glBegin(GL_QUADS);
+    glColor3ub(43, 40, 40);
+    glVertex2f(0.2f, -0.4f);    // x, y
+    glVertex2f(0.2f,-0.55f);
+    glVertex2f(0.25f, -0.55f);
+    glVertex2f(0.25f,-0.4f);    // x, y
+	glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3ub(235, 70, 0);
+    glVertex2f(0.21f, -0.4f);    // x, y
+    glVertex2f(0.2f,-0.3f);
+    glVertex2f(0.25f, -0.3f);
+    glVertex2f(0.24f,-0.4f);    // x, y
+	glEnd();
+
+
+    glBegin(GL_QUADS);
+    glColor3ub(43, 40, 40);
+    glVertex2f(0.3f, -0.4f);    // x, y
+    glVertex2f(0.3f,-0.55f);
+    glVertex2f(0.35f, -0.55f);
+    glVertex2f(0.35f,-0.4f);    // x, y
+	glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3ub(235, 70, 0);
+    glVertex2f(0.31f, -0.4f);    // x, y
+    glVertex2f(0.3f,-0.3f);
+    glVertex2f(0.35f, -0.3f);
+    glVertex2f(0.34f,-0.4f);    // x, y
+	glEnd();
+
+
+    glBegin(GL_QUADS);
+    glColor3ub(43, 40, 40);
+    glVertex2f(0.4f, -0.4f);    // x, y
+    glVertex2f(0.4f,-0.55f);
+    glVertex2f(0.45f, -0.55f);
+    glVertex2f(0.45f,-0.4f);    // x, y
+	glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3ub(235, 70, 0);
+    glVertex2f(0.41f, -0.4f);    // x, y
+    glVertex2f(0.4f,-0.3f);
+    glVertex2f(0.45f, -0.3f);
+    glVertex2f(0.44f,-0.4f);    // x, y
+	glEnd();
+
+	glBegin(GL_QUADS);
+    glColor3ub(43, 40, 40);
+    glVertex2f(0.5f, -0.4f);    // x, y
+    glVertex2f(0.5f,-0.55f);
+    glVertex2f(0.55f, -0.55f);
+    glVertex2f(0.55f,-0.4f);    // x, y
+	glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3ub(235, 70, 0);
+    glVertex2f(0.51f, -0.4f);    // x, y
+    glVertex2f(0.5f,-0.3f);
+    glVertex2f(0.55f, -0.3f);
+    glVertex2f(0.54f,-0.4f);    // x, y
+	glEnd();
+
+
+	glBegin(GL_QUADS);
+    glColor3ub(43, 40, 40);
+    glVertex2f(0.6f, -0.4f);    // x, y
+    glVertex2f(0.6f,-0.55f);
+    glVertex2f(0.65f, -0.55f);
+    glVertex2f(0.65f,-0.4f);    // x, y
+	glEnd();
+
+	glBegin(GL_QUADS);
+    glColor3ub(235, 70, 0);
+    glVertex2f(0.61f, -0.4f);    // x, y
+    glVertex2f(0.6f,-0.3f);
+    glVertex2f(0.65f, -0.3f);
+    glVertex2f(0.64f,-0.4f);    // x, y
+	glEnd();
+}
 
 
 
@@ -1168,6 +1380,7 @@ void fullView()
    buildingsView();
    ahsanMonjilView();
    roadView();
+   water();
    glFlush();
 
 }
