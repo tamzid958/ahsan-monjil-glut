@@ -1339,14 +1339,14 @@ void desertView(){
     anyQuad(1.0f, 0.5f, 1.0f, 0.1f, -1.0f, 0.1f, -1.0f, 0.5f, 76, 70, 50);
 }
 
-void NightView(){
+void NightSky(){
     anyQuad(1.0f, 1.0f, 1.0f, -1.0f, -1.0f, -1.0f, -1.0f, 1.0f, 0, 0, 0);
     moonComponent();
     starComponent();
 }
 
 void skyView(){
-    (isDay) ? sunComponent() : NightView();
+    (isDay) ? sunComponent() : NightSky();
 }
 
 void rainView()
