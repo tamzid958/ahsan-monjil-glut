@@ -28,6 +28,10 @@ GLfloat ship_speed = 0.005f;
 bool isDay = true;
 bool isRainy = false;
 
+
+void blank(){
+}
+
 void update(int value) {
 
     if(position <-1.0)
@@ -1405,9 +1409,6 @@ void rainView()
     glPopMatrix();
     glutPostRedisplay();
 
-}
-
-void blank(){
 }
 
 void fullView()
