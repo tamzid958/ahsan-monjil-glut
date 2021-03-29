@@ -25,6 +25,9 @@ GLfloat ship_pos = 0.78f;
 GLfloat ship_speed = 0.005f;
 
 
+bool isDay = true;
+bool isRainy = false;
+
 void update(int value) {
 
     if(position <-1.0)
@@ -78,41 +81,6 @@ void update(int value) {
 	glutPostRedisplay();
 	glutTimerFunc(100, update, 0);
 }
-
-
-void handleMouse(int button, int state, int x, int y) {
-	if (button == GLUT_LEFT_BUTTON)
-        {
-			car_speed += 0.1f;
-        }
-    if (button == GLUT_RIGHT_BUTTON)
-        {
-            car_speed -= 0.1f;
-        }
-	glutPostRedisplay();
-
-}
-
-
-
-void SpecialInput(int key, int x, int y)
-{
-    switch(key)
-    {
-        case GLUT_KEY_UP:
-            car_speed=.5;
-            break;
-        case GLUT_KEY_DOWN:
-            car_speed=.2;
-            break;
-        case GLUT_KEY_LEFT:
-            break;
-        case GLUT_KEY_RIGHT:
-            break;
-        }
-    glutPostRedisplay();
-}
-
 
 //make circle
 void Circle(GLfloat cx, GLfloat cy,GLfloat cz, GLfloat radius,int r,int g,int b)
@@ -183,9 +151,6 @@ void Idle()
 
 void initState(){
     glClearColor(0.5f, 1.0f, 1.0f, 0.0f);
-
-
-
     glClear(GL_COLOR_BUFFER_BIT);
     glLineWidth(4);
     glPointSize(7);
@@ -657,6 +622,42 @@ void sunComponent()
     Circle(0.8f, 0.8f, 0.0f, 0.09f, 255, 255, 0);
 }
 
+
+void moonComponent()
+{
+    Circle(0.8f, 0.8f, 0.0f, 0.09f, 204, 204, 204);
+}
+
+void starComponent(){
+    glPointSize(2);
+    glBegin(GL_POINTS);
+	glColor3ub(255,255,255);
+	glVertex2f(-0.9,0.9);
+	glVertex2f(-0.8,0.8);
+	glVertex2f(-0.85,0.95);
+    glVertex2f(-0.75,0.85);
+    glVertex2f(-0.55,0.85);
+    glVertex2f(-0.25,0.85);
+    glVertex2f(-0.25,0.75);
+    glVertex2f(-0.0,0.75);
+    glVertex2f(0.25,0.85);
+    glVertex2f(0.275,0.75);
+    glVertex2f(0.0,0.75);
+    glVertex2f(0.9,0.91);
+	glVertex2f(0.875,0.95);
+    glVertex2f(0,0.99);
+    glVertex2f(-0.1,0.95);
+    glVertex2f(-0.2,0.93);
+    glVertex2f(-0.4,0.95);
+    glVertex2f(0.1,0.95);
+    glVertex2f(0.2,0.93);
+    glVertex2f(0.4,0.95);
+    glVertex2f(0.7,0.95);
+    glVertex2f(0.8,0.95);
+    glEnd();
+    glPointSize(7);
+}
+
 void ahsanMonjilView(){
 
     anyQuad(0.8f, 0.5f, 0.8f, 0.1f, -0.8f, 0.1f, -0.8f, 0.5f, 255, 99, 71);;
@@ -1101,11 +1102,11 @@ void ahsanMonjilView(){
 
 }
 
-void WaterView()
+void WaterView(int R, int G, int B)
 {
 
-     glBegin(GL_QUADS);
-    glColor3ub(2, 141, 224);
+    glBegin(GL_QUADS);
+    glColor3ub(R, G, B);
 	glVertex2f(-1.0f, -0.2f);    // x, y
     glVertex2f(-1.0f,-1);
     glVertex2f(1.0, -1);// x, y
@@ -1113,11 +1114,11 @@ void WaterView()
 	glEnd();
     glBegin(GL_POLYGON);
 
-    anyQuad(-1.0f, -0.2f, -1.0f, -1.0f, 1.0f, -1.0f,1.0f, -0.2f, 2, 141, 224);
+    anyQuad(-1.0f, -0.2f, -1.0f, -1.0f, 1.0f, -1.0f,1.0f, -0.2f, R, G, B);
 
     glBegin(GL_POLYGON);
 
-    glColor3ub(2, 120, 191);
+    glColor3ub(R + 2, G + 3, B + 10);
     glVertex2f(1.0f, -0.8f);
     glVertex2f(-1.0f, -0.8f);
     glVertex2f(-1.0f, -0.8f);
@@ -1135,7 +1136,7 @@ void WaterView()
 
 	//waves
     glBegin(GL_LINE_STRIP);
-    glColor3ub(2, 120, 191);
+    glColor3ub(R, G, B);
     glVertex2f(1.0f, -0.8f);
     glVertex2f(-1.0f, -0.8f);
     glVertex2f(-1.0f, -0.7f);
@@ -1209,10 +1210,10 @@ void roadView()
     car_4Component();
 }
 
-void mountainView(){
+void mountainView(int R, int G, int B){
 
     glLoadIdentity();//Mountain
-    glColor3ub(15, 114, 22);
+    glColor3ub(R, G, B);
     glBegin(GL_POLYGON);
     glVertex2f(-1, 0.5);
     glVertex2f(1, 0.5);
@@ -1234,8 +1235,8 @@ void mountainView(){
 
 
 void buildingsView(){
- buildingComponent();
-     glTranslatef(0.03f, 0.1f, 0);//TallBuilding1
+    buildingComponent();
+    glTranslatef(0.03f, 0.1f, 0);//TallBuilding1
     glScalef(0.5, 1.1, 0);
     anyQuad(-0.7f , 0.7f, -0.7f, 0.3f, -0.9f, 0.3f, -0.9f, 0.7f, 163, 163, 117);
     glLoadIdentity();
@@ -1342,197 +1343,20 @@ void skyView(){
     sunComponent();
 }
 
-void dayView()
-{
-   initState();
-   axisDraw();
-   skyView();
-   mountainView();
-   desertView();
-   buildingsView();
-   ahsanMonjilView();
-   roadView();
-   WaterView();
-   glFlush();
-
-}
-
-
-
-
-
-//************************************Night View********************************
-
-
-void initStateNight(){
-    glClearColor(0,0,0,0);
-
-    glClear(GL_COLOR_BUFFER_BIT);
-    glLineWidth(4);
-    glPointSize(7);
-}
-
-void moonComponentNight()
-{
-    Circle(0.8f, 0.8f, 0.0f, 0.09f, 204, 204, 204);
-}
-
-void star(){
-
-
-glPointSize(2);
-glBegin(GL_POINTS);
-	glColor3ub(255,255,255);
-
-	glVertex2f(-0.9,0.9);
-	glVertex2f(-0.8,0.8);
-	glVertex2f(-0.85,0.95);
-    glVertex2f(-0.75,0.85);
-    glVertex2f(-0.55,0.85);
-    glVertex2f(-0.25,0.85);
-    glVertex2f(-0.25,0.75);
-    glVertex2f(-0.0,0.75);
-    glVertex2f(0.25,0.85);
-    glVertex2f(0.275,0.75);
-    glVertex2f(0.0,0.75);
-    glVertex2f(0.9,0.91);
-	glVertex2f(0.875,0.95);
-    glVertex2f(0,0.99);
-    glVertex2f(-0.1,0.95);
-    glVertex2f(-0.2,0.93);
-    glVertex2f(-0.4,0.95);
-    glVertex2f(0.1,0.95);
-    glVertex2f(0.2,0.93);
-    glVertex2f(0.4,0.95);
-    glVertex2f(0.7,0.95);
-    glVertex2f(0.8,0.95);
-glEnd();
-
-}
-
-
 void skyViewNight(){
-    moonComponentNight();
-    star();
+    anyQuad(1.0f, 1.0f, 1.0f, -1.0f, -1.0f, -1.0f, -1.0f, 1.0f, 0, 0, 0);
+    moonComponent();
+    starComponent();
 }
 
-void mountainViewNight(){
-
-    glLoadIdentity();//Mountain
-    glColor3ub(0, 51, 17);
-    glBegin(GL_POLYGON);
-    glVertex2f(-1, 0.5);
-    glVertex2f(1, 0.5);
-    glVertex2f(0.9, 0.7);
-    glVertex2f(0.8, 0.55);
-    glVertex2f(0.5, 0.75);
-    glVertex2f(0.3, 0.55);
-    glVertex2f(0.1, 0.88);
-    glVertex2f(-0.1, 0.66);
-    glVertex2f(-0.3, 0.79);
-    glVertex2f(-0.6, 0.63);
-    glVertex2f(-0.7, 0.71);
-    glVertex2f(-0.9, 0.59);
-    glEnd();//endOfMountain
-    glLoadIdentity();
-
-    grassComponent();
-}
-
-
-
-void WaterViewNight()
+void rainView()
 {
 
-     glBegin(GL_QUADS);
-    glColor3ub(0, 19, 77);
-	glVertex2f(-1.0f, -0.2f);    // x, y
-    glVertex2f(-1.0f,-1);
-    glVertex2f(1.0, -1);// x, y
-	glVertex2f(1.0f, -0.2); // x, y
-	glEnd();
-    glBegin(GL_POLYGON);
+    float x=0.0;
+    float y=1.5;
+    float x1=-0.099;
 
-    anyQuad(-1.0f, -0.2f, -1.0f, -1.0f, 1.0f, -1.0f,1.0f, -0.2f, 0, 32, 128);
-
-    glBegin(GL_POLYGON);
-
-    glColor3ub(0, 19, 77);
-    glVertex2f(1.0f, -0.8f);
-    glVertex2f(1.0f, -0.8f);
-    glVertex2f(-1.0f, -0.8f);
-    glVertex2f(-1.0f, -0.8f);
-    glVertex2f(-0.8f, -0.8f);
-    glVertex2f(-0.6f, -0.7f);
-    glVertex2f(-0.4f, -0.7f);
-    glVertex2f(-0.2f, -0.8f);
-    glVertex2f(-0.0f, -0.7f);
-    glVertex2f(0.2f, -0.7f);
-    glVertex2f(0.4f, -0.8f);
-    glVertex2f(0.6f, -0.8f);
-    glVertex2f(0.8f, -0.7f);
-    glVertex2f(1.0f, -0.7f);
-    glEnd();
-
-	//waves
-    glBegin(GL_LINE_STRIP);
-    glColor3ub(0, 19, 77);
-    glVertex2f(1.0f, -0.8f);
-    glVertex2f(-1.0f, -0.8f);
-    glVertex2f(-1.0f, -0.7f);
-    glVertex2f(-0.8f, -0.8f);
-    glVertex2f(-0.6f, -0.7f);
-    glVertex2f(-0.4f, -0.7f);
-    glVertex2f(-0.2f, -0.8f);
-    glVertex2f(-0.0f, -0.7f);
-    glVertex2f(0.2f, -0.7f);
-    glVertex2f(0.4f, -0.8f);
-    glVertex2f(0.6f, -0.8f);
-    glVertex2f(0.8f, -0.7f);
-    glVertex2f(1.0f, -0.7f);
-    glEnd();
-
-
-
-
-    glLoadIdentity();
     glPushMatrix();
-    glTranslatef(ship_pos,0,0);
-    shipComponent();
-    glPopMatrix();
-    glLoadIdentity();
-
-}
-
-
-
-
-void nightView()
-{
-   initStateNight();
-   skyViewNight();
-   mountainViewNight();
-   desertView();
-   buildingsView();
-   ahsanMonjilView();
-   roadView();
-   WaterViewNight();
-   glFlush();
-
-}
-
-
-//*****************************************Rain********************************
-
-
-void rain()
-{
-
-float x=0.0;
-float y=1.5;
-float x1=-0.099;
-
-     glPushMatrix();
     glTranslatef(cloud_position,0,0);
     CloudCircle(-0.58f,0.75f,0.0f,0.060f,47,79,79,150);//left cloud
     CloudCircle(-0.5f,0.82f,0.0f,0.068f,47,79,79,150);
@@ -1583,27 +1407,30 @@ float x1=-0.099;
 
 }
 
+void blank(){
+}
 
-
-
-
-void rainView()
+void fullView()
 {
-   initStateNight();
-   mountainViewNight();
+   initState();
+   //axisDraw();
+
+   (isDay) ? skyView() : skyViewNight();
+
+   (isDay) ? mountainView(15, 114, 22) : mountainView(0, 51, 17);
+
    desertView();
    buildingsView();
    ahsanMonjilView();
    roadView();
-   WaterViewNight();
-   rain();
 
+   (isDay) ? WaterView(2, 120, 191) : WaterView(0, 19, 77);
+
+   (isRainy) ? rainView() : blank();
 
    glFlush();
 
 }
-
-
 
 void handleKeypress(unsigned char key, int x, int y) {
 	switch (key)
@@ -1614,36 +1441,60 @@ void handleKeypress(unsigned char key, int x, int y) {
         case 's':
             car_speed = 0.1f;
             break;
-        case 'n':
-            glutDisplayFunc(nightView);
-            break;
         case 'd':
-            glutDisplayFunc(dayView);
+            isDay = !isDay;
             break;
         case 'r':
-            glutDisplayFunc(rainView);
+            isRainy = !isRainy;
             break;
-
-
-
         glutPostRedisplay();
 	}
 }
 
 
+void handleMouse(int button, int state, int x, int y) {
+	if (button == GLUT_LEFT_BUTTON)
+        {
+			car_speed += 0.1f;
+        }
+    if (button == GLUT_RIGHT_BUTTON)
+        {
+            car_speed -= 0.1f;
+        }
+	glutPostRedisplay();
 
+}
+
+
+
+void SpecialInput(int key, int x, int y)
+{
+    switch(key)
+    {
+        case GLUT_KEY_UP:
+            car_speed=.5;
+            break;
+        case GLUT_KEY_DOWN:
+            car_speed=.2;
+            break;
+        case GLUT_KEY_LEFT:
+            break;
+        case GLUT_KEY_RIGHT:
+            break;
+        }
+    glutPostRedisplay();
+}
 
 
 int main(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitWindowSize(1200, 800);
     glutCreateWindow("Ahsan Monjil");
-    glutDisplayFunc(dayView);
+    glutDisplayFunc(fullView);
     glutIdleFunc(Idle);
     glutKeyboardFunc(handleKeypress);
     glutMouseFunc(handleMouse);
     glutSpecialFunc(SpecialInput);
-
     glutTimerFunc(1500, update, 0);
     glutMainLoop();
     return 0;
