@@ -1104,15 +1104,6 @@ void ahsanMonjilView(){
 void WaterView(int R, int G, int B)
 {
 
-    glBegin(GL_QUADS);
-    glColor3ub(R, G, B);
-	glVertex2f(-1.0f, -0.2f);    // x, y
-    glVertex2f(-1.0f,-1);
-    glVertex2f(1.0, -1);// x, y
-	glVertex2f(1.0f, -0.2); // x, y
-	glEnd();
-    glBegin(GL_POLYGON);
-
     anyQuad(-1.0f, -0.2f, -1.0f, -1.0f, 1.0f, -1.0f,1.0f, -0.2f, R, G, B);
 
     glBegin(GL_POLYGON);
