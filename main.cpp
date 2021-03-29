@@ -101,21 +101,6 @@ void Circle(GLfloat cx, GLfloat cy,GLfloat cz, GLfloat radius,int r,int g,int b)
 	glEnd();
 }
 
-//cloud circle
-void CloudCircle(GLfloat cx, GLfloat cy,GLfloat cz, GLfloat radius,int r,int g,int b, int c)
-{
-    glColor4ub(r,g,b,c);
-	glBegin(GL_TRIANGLE_FAN);
-		glVertex3f(cx, cy,cz); // center of circle
-		for(int i = 0; i <= triangleAmount;i++) {
-			glVertex3f(
-		            cx + (radius * cos(i *  twicePi / triangleAmount)),
-			    cy + (radius * sin(i * twicePi / triangleAmount)),cz
-			);
-		}
-	glEnd();
-}
-
 
 void anyTriangle( float a, float b, float c, float d, float e, float f, int R, int G, int B ){
     glBegin(GL_TRIANGLES);
@@ -1346,22 +1331,20 @@ void rainView()
 
     glPushMatrix();
     glTranslatef(cloud_position,0,0);
-    CloudCircle(-0.58f,0.75f,0.0f,0.060f,47,79,79,150);//left cloud
-    CloudCircle(-0.5f,0.82f,0.0f,0.068f,47,79,79,150);
-    CloudCircle(-0.42f,0.75f,0.0f,0.068f,47,79,79,150);//right cloud
-    CloudCircle(-0.5f,0.72f,0.0f,0.07f,47,79,79,150);
+    Circle(-0.58f, 0.75f, 0.0f, 0.060f, 70, 75, 71);//left cloud
+    Circle(-0.5f, 0.82f, 0.0f, 0.068f, 70, 75, 71);
+    Circle(-0.42f, 0.75f, 0.0f, 0.068f, 70, 75, 71);//right cloud
+    Circle(-0.5f, 0.72f, 0.0f, 0.07f, 70, 75, 71);
     glPopMatrix();
 
-     glPushMatrix();
+    glPushMatrix();
     glTranslatef(cloud_position_1,0,0);
-    CloudCircle(-0.16f,0.69f,0.0f,0.060f,47,79,79,150);
-    CloudCircle(-0.08f,0.76f,0.0f,0.068f,47,79,79,120);
-    CloudCircle(0.0f,0.68f,0.0f,0.068f,47,79,79,120);
-    CloudCircle(-0.08f,0.652f,0.0f,0.07f,47,79,79,120);
-
+    Circle(-0.16f, 0.69f, 0.0f, 0.060f, 70, 75, 71);
+    Circle(-0.08f, 0.76f, 0.0f, 0.068f, 70, 75, 71);
+    Circle(0.0f, 0.68f, 0.0f, 0.068f, 70, 75, 71);
+    Circle(-0.08f, 0.652f, 0.0f, 0.07f, 70, 75, 71);
 
     glPopMatrix();
-
     glColor3ub(255,255,255);
     glPushMatrix();
     glTranslatef(0,rainPos,0);
