@@ -27,7 +27,6 @@ GLfloat ship_speed = 0.005f;
 
 bool isDay = true;
 bool isRainy = false;
-bool isPaused = false;
 
 void blank(){
 }
