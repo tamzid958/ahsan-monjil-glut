@@ -35,49 +35,36 @@ void update(int value) {
 
     if(position <-1.0)
         position = 1.0f;
-
     position -= speed;
 
-    //car
     if(car_pos > 1.0)
         car_pos = -1.2f;
-
     car_pos += car_speed;
 
 
     if(car3_pos < -1.0)
         car3_pos = 1.2f;
-
     car3_pos -= car_speed;
 
 
     if(car4_pos < -1.0)
         car4_pos = 1.2f;
-
     car4_pos -= car_speed;
 
-
-
-
-    //cloud 1
     if(cloud_position > 1.5)
         cloud_position = -1.2f;
     cloud_position +=cloud_speed;
-    //cloud 2
+
     if(cloud_position_1 > 1.8)
         cloud_position_1 = -1.2f;
     cloud_position_1 +=cloud_speed;
 
-    //rain
     if(rainPos<-1.0)
-    {
         rainPos = -1.0;
-    }
     rainPos -=1.47;
 
     if(ship_pos < -1.8)
         ship_pos = 1.2f;
-
     ship_pos -= ship_speed;
 
 
@@ -201,15 +188,11 @@ void threeDotComponent(){
 
 
 void grassComponent(){
-
- anyQuad(-1, 0.1, -1, -0.2, 1, -0.2, 1, 0.1, 10, 255, 100);//Grass
+    anyQuad(-1, 0.1, -1, -0.2, 1, -0.2, 1, 0.1, 10, 255, 100);//Grass
 }
 
 void carComponent()
 {
-
-    glPushMatrix();
-    glTranslatef(car_pos,0,0);
     glBegin(GL_POLYGON);
     glColor3ub(255, 255, 51);
     glVertex3f(-0.3,-0.07,0);
@@ -259,15 +242,11 @@ void carComponent()
     Circle(-0.26f, -0.070f, 0.010f,0, 0, 0);
      //front bumper
     Circle(-0.199f, -0.07f, 0.01f, 0, 0, 0);
-    glPopMatrix();
 }
 
 
 void car_2Component()
 {
-
-    glPushMatrix();
-    glTranslatef(car_pos,0,0);
 
     anyQuad(0.025f, 0.001f,0.025f, -0.045f, 0.222f, -0.045f, 0.222f, 0.001f, 255, 77, 255);
 
@@ -333,15 +312,10 @@ void car_2Component()
     Circle(0.055f,-0.045f, 0.010f,0,0,0);
     //front bumper
     Circle(0.20f,-0.045f, 0.01f,0,0,0);
-    glPopMatrix();
 }
 
 void car_3Component()
 {
-    glPushMatrix();
-    glTranslatef(car3_pos,0,0);
-
-
     anyQuad(0.04f, -0.14f, 0.04f, -0.19f, 0.19f, -0.19f, 0.19f, -0.14f, 0, 128, 0);
 
     //glass part of car
@@ -417,15 +391,11 @@ void car_3Component()
     Circle(0.068f,-0.19f,0.010f,0,0,0);
     //front bumper
     Circle(0.15f,-0.19f,0.01f,0,0,0);
-    glPopMatrix();
 }
 
 
 void car_4Component()
 {
-    glPushMatrix();
-    glTranslatef(car4_pos,0,0);
-
     anyQuad(0.04f, -0.14f, 0.04f, -0.19f, 0.19f, -0.19f, 0.19f, -0.14f, 255, 0, 0);
     //glass part of car
 
@@ -489,7 +459,6 @@ void car_4Component()
     Circle(0.068f,-0.19f,0.010f,0,0,0);
     //front bumper
     Circle(0.15f,-0.19f,0.01f,0,0,0);
-    glPopMatrix();
 }
 
 void buildingComponent(){
@@ -1178,10 +1147,33 @@ void roadView()
 
     glEnd();
 
+    glLoadIdentity();
+    glPushMatrix();
+    glTranslatef(car_pos,0,0);
     carComponent();
+    glPopMatrix();
+    glLoadIdentity();
+
+    glLoadIdentity();
+    glPushMatrix();
+    glTranslatef(car_pos,0,0);
     car_2Component();
+    glPopMatrix();
+    glLoadIdentity();
+
+    glLoadIdentity();
+    glPushMatrix();
+    glTranslatef(car3_pos,0,0);
     car_3Component();
+    glPopMatrix();
+    glLoadIdentity();
+
+    glLoadIdentity();
+    glPushMatrix();
+    glTranslatef(car4_pos,0,0);
     car_4Component();
+    glPopMatrix();
+    glLoadIdentity();
 }
 
 void mountainView(int R, int G, int B){
@@ -1373,8 +1365,6 @@ void rainView()
     }
     glEnd();
     glPopMatrix();
-    glutPostRedisplay();
-
 }
 
 void fullView()
