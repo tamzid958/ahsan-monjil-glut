@@ -27,7 +27,7 @@ GLfloat ship_speed = 0.005f;
 
 bool isDay = true;
 bool isRainy = false;
-
+bool isPaused = false;
 
 void blank(){
 }
@@ -1380,9 +1380,8 @@ void rainView()
 
 void fullView()
 {
-   initState();
+    initState();
    //axisDraw();
-
     skyView();
 
    (isDay) ? mountainView(15, 114, 22) : mountainView(0, 51, 17);
@@ -1405,9 +1404,11 @@ void handleKeypress(unsigned char key, int x, int y) {
 	{
         case 'p':
             car_speed = 0.0f;
+            ship_speed = 0.0f;
             break;
         case 's':
-            car_speed = 0.1f;
+            car_speed = 0.079f;
+            ship_speed = 0.005f;
             break;
         case 'd':
             isDay = !isDay;
@@ -1423,11 +1424,13 @@ void handleKeypress(unsigned char key, int x, int y) {
 void handleMouse(int button, int state, int x, int y) {
 	if (button == GLUT_LEFT_BUTTON)
         {
-			car_speed += 0.1f;
+			car_speed += 0.05f;
+			ship_speed += 0.005f;
         }
     if (button == GLUT_RIGHT_BUTTON)
         {
-            car_speed -= 0.1f;
+            car_speed -= 0.05f;
+            ship_speed -= 0.005f;
         }
 	glutPostRedisplay();
 
@@ -1440,14 +1443,16 @@ void SpecialInput(int key, int x, int y)
     switch(key)
     {
         case GLUT_KEY_UP:
-            car_speed=.5;
+            car_speed = .5;
             break;
         case GLUT_KEY_DOWN:
-            car_speed=.2;
+            car_speed = .2;
             break;
         case GLUT_KEY_LEFT:
+            ship_speed = 0.005f;
             break;
         case GLUT_KEY_RIGHT:
+            ship_speed = 0.01f;
             break;
         }
     glutPostRedisplay();
