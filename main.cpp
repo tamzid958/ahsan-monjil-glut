@@ -11,14 +11,19 @@ GLfloat position = 0.0f;
 GLfloat speed = 0.1f;
 GLfloat x = 0,y = 0,radius = 0;
 GLfloat twicePi = 2.0f * PI;
-GLfloat car_position = 0.0f;
+GLfloat car_pos = 0.0f;
 GLfloat car_speed = 0.079f;
 GLfloat car3_pos = 0.0f;
 GLfloat car4_pos = 0.78f;
+
 GLfloat cloud_position = 0.20f;
 GLfloat cloud_position_1 = 0.19f;
 GLfloat cloud_speed = 0.008f;
 GLfloat rainPos= -1.0;
+
+GLfloat ship_pos = 0.78f;
+GLfloat ship_speed = 0.005f;
+
 
 void update(int value) {
 
@@ -28,10 +33,10 @@ void update(int value) {
     position -= speed;
 
     //car
-    if(car_position > 1.0)
-        car_position = -1.2f;
+    if(car_pos > 1.0)
+        car_pos = -1.2f;
 
-    car_position += car_speed;
+    car_pos += car_speed;
 
 
     if(car3_pos < -1.0)
@@ -44,6 +49,7 @@ void update(int value) {
         car4_pos = 1.2f;
 
     car4_pos -= car_speed;
+
 
 
 
@@ -62,6 +68,12 @@ void update(int value) {
         rainPos = -1.0;
     }
     rainPos -=1.47;
+
+    if(ship_pos < -1.8)
+        ship_pos = 1.2f;
+
+    ship_pos -= ship_speed;
+
 
 	glutPostRedisplay();
 	glutTimerFunc(100, update, 0);
@@ -249,7 +261,7 @@ void carComponent()
 {
 
     glPushMatrix();
-    glTranslatef(car_position,0,0);
+    glTranslatef(car_pos,0,0);
     glBegin(GL_POLYGON);
     glColor3ub(255, 255, 51);
     glVertex3f(-0.3,-0.07,0);
@@ -307,7 +319,7 @@ void car_2Component()
 {
 
     glPushMatrix();
-    glTranslatef(car_position,0,0);
+    glTranslatef(car_pos,0,0);
 
     anyQuad(0.025f, 0.001f,0.025f, -0.045f, 0.222f, -0.045f, 0.222f, 0.001f, 255, 77, 255);
 
@@ -573,9 +585,6 @@ void shipComponent(){
 
 
     //boat
-     glPushMatrix();
-    glTranslatef(car4_pos,0,0);
-
     anyQuad(0.0f, -0.7f,0.1f,-0.8f,0.7f, -0.8f,0.8f,-0.7f, 41, 34, 31);
 
 //ship floor
@@ -641,8 +650,6 @@ void shipComponent(){
     anyQuad(0.6f, -0.4f, 0.6f, -0.55f, 0.65f, -0.55f, 0.65f, -0.4f, 43, 40, 40);
 
 	anyQuad(0.61f, -0.4f, 0.6f, -0.3f, 0.65f, -0.3f, 0.64f,-0.4f, 235, 70, 0);
-
-	glPopMatrix();
 }
 
 void sunComponent()
@@ -1144,13 +1151,12 @@ void WaterView()
     glVertex2f(1.0f, -0.7f);
     glEnd();
 
-
-
-
-
-
+    glLoadIdentity();
+    glPushMatrix();
+    glTranslatef(ship_pos,0,0);
     shipComponent();
-
+    glPopMatrix();
+    glLoadIdentity();
 }
 
 
@@ -1451,7 +1457,7 @@ void WaterViewNight()
 
     glBegin(GL_POLYGON);
 
-    glColor3ub(0, 19, 77);  //2, 120, 191
+    glColor3ub(0, 19, 77);
     glVertex2f(1.0f, -0.8f);
     glVertex2f(1.0f, -0.8f);
     glVertex2f(-1.0f, -0.8f);
@@ -1489,9 +1495,12 @@ void WaterViewNight()
 
 
 
-
-
+    glLoadIdentity();
+    glPushMatrix();
+    glTranslatef(ship_pos,0,0);
     shipComponent();
+    glPopMatrix();
+    glLoadIdentity();
 
 }
 
