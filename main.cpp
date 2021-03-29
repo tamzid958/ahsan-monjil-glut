@@ -104,15 +104,10 @@ void Circle(GLfloat cx, GLfloat cy,GLfloat cz, GLfloat radius,int r,int g,int b)
 //cloud circle
 void CloudCircle(GLfloat cx, GLfloat cy,GLfloat cz, GLfloat radius,int r,int g,int b, int c)
 {
-	int triangleAmount = 40; //# of triangles used to draw circle
-	GLfloat twicePi = 2.0f * 3.1416;
-    int counter=0;
-
     glColor4ub(r,g,b,c);
 	glBegin(GL_TRIANGLE_FAN);
 		glVertex3f(cx, cy,cz); // center of circle
 		for(int i = 0; i <= triangleAmount;i++) {
-			counter+=1;
 			glVertex3f(
 		            cx + (radius * cos(i *  twicePi / triangleAmount)),
 			    cy + (radius * sin(i * twicePi / triangleAmount)),cz
@@ -1343,22 +1338,20 @@ void desertView(){
     anyQuad(1.0f, 0.5f, 1.0f, 0.1f, -1.0f, 0.1f, -1.0f, 0.5f, 76, 70, 50);
 }
 
-void NightSky(){
+void NightSkyJoinedComponent(){
     anyQuad(1.0f, 1.0f, 1.0f, -1.0f, -1.0f, -1.0f, -1.0f, 1.0f, 0, 0, 0);
     moonComponent();
     starComponent();
 }
 
 void skyView(){
-    (isDay) ? sunComponent() : NightSky();
+    (isDay) ? sunComponent() : NightSkyJoinedComponent();
 }
 
 void rainView()
 {
 
-    float x=0.0;
-    float y=1.5;
-    float x1=-0.099;
+    float x=0.0, y = 1.5, x1=-0.099;
 
     glPushMatrix();
     glTranslatef(cloud_position,0,0);
