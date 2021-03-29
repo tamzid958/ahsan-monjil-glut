@@ -43,7 +43,7 @@ void update(int value) {
 
     car4_pos -= car_speed;
 
-    if(ship_pos < -1.0)
+    if(ship_pos < -1.8)
         ship_pos = 1.2f;
 
     ship_pos -= ship_speed;
