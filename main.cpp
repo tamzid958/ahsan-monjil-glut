@@ -1339,14 +1339,14 @@ void desertView(){
     anyQuad(1.0f, 0.5f, 1.0f, 0.1f, -1.0f, 0.1f, -1.0f, 0.5f, 76, 70, 50);
 }
 
-void skyView(){
-    sunComponent();
-}
-
-void skyViewNight(){
+void NightView(){
     anyQuad(1.0f, 1.0f, 1.0f, -1.0f, -1.0f, -1.0f, -1.0f, 1.0f, 0, 0, 0);
     moonComponent();
     starComponent();
+}
+
+void skyView(){
+    (isDay) ? sunComponent() : NightView();
 }
 
 void rainView()
@@ -1415,7 +1415,7 @@ void fullView()
    initState();
    //axisDraw();
 
-   (isDay) ? skyView() : skyViewNight();
+    skyView();
 
    (isDay) ? mountainView(15, 114, 22) : mountainView(0, 51, 17);
 
