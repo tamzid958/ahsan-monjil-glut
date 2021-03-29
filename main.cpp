@@ -87,15 +87,15 @@ void update(int value) {
 }
 
 //make circle
-void Circle(GLfloat cx, GLfloat cy,GLfloat cz, GLfloat radius,int r,int g,int b)
+void Circle(GLfloat cx, GLfloat cy, GLfloat radius, int r, int g, int b)
 {
     glColor3ub(r,g,b);
 	glBegin(GL_TRIANGLE_FAN);
-		glVertex3f(cx, cy,cz); // center of circle
+		glVertex2f(cx, cy); // center of circle
 		for(int i = 0; i <= triangleAmount;i++) {
-			glVertex3f(
+			glVertex2f(
 		            cx + (radius * cos(i *  twicePi / triangleAmount)),
-			    cy + (radius * sin(i * twicePi / triangleAmount)),cz
+			    cy + (radius * sin(i * twicePi / triangleAmount))
 			);
 		}
 	glEnd();
@@ -156,7 +156,7 @@ void pillarComponent(){
 
     anyQuad(-0.755f, 0.55f, -0.755f, 0.5f, -0.795f, 0.5f, -0.795f, 0.55f, 255, 140, 0);
 
-    Circle(-.775f,.55f,0.0f,.02f,255,140,0);
+    Circle(-.775f, .55f, .02f, 255, 140, 0);
 
 	glBegin(GL_LINES);
     glColor3ub(255,140,0);
@@ -171,7 +171,7 @@ void gombujhComponent(){
 
   anyQuad(-0.6f, 0.57f, -0.6f, 0.52f, -0.75f, 0.52f, -0.75f, 0.57f, 255, 140, 0);
 
-  Circle(-.68f, .56f, 0.0f, .045f, 255, 140, 0);
+  Circle(-.68f, .56f, .045f, 255, 140, 0);
 
   glBegin(GL_POINTS);
   glColor3ub(255,140,0);
@@ -185,7 +185,7 @@ void squareWindowComponent(int R, int G, int B){
 
 void ovalWindowComponent(int R, int G, int B){
     anyQuad(-0.69f, 0.4f, -0.69f, 0.3f, -0.73f, 0.3f, -0.73f, 0.4f, R, G, B);
-    Circle(-.71f, .4f, 0.0f, .021f, R, G, B);
+    Circle(-.71f, .4f, .021f, R, G, B);
 }
 
 
@@ -257,9 +257,9 @@ void carComponent()
 
     //Wheels
     //backbumper
-    Circle(-0.26f,-0.070f,0.0f,0.010f,0,0,0);
+    Circle(-0.26f, -0.070f, 0.010f,0, 0, 0);
      //front bumper
-    Circle(-0.199f,-0.07f,0.0f,0.01f,0,0,0);
+    Circle(-0.199f, -0.07f, 0.01f, 0, 0, 0);
     glPopMatrix();
 }
 
@@ -331,9 +331,9 @@ void car_2Component()
     //Wheels
     //backbumper
 
-    Circle(0.055f,-0.045f,0.0f,0.010f,0,0,0);
+    Circle(0.055f,-0.045f, 0.010f,0,0,0);
     //front bumper
-    Circle(0.20f,-0.045f,0.0f,0.01f,0,0,0);
+    Circle(0.20f,-0.045f, 0.01f,0,0,0);
     glPopMatrix();
 }
 
@@ -415,9 +415,9 @@ void car_3Component()
     //Wheels
     //backbumper
 
-    Circle(0.068f,-0.19f,0.0f,0.010f,0,0,0);
+    Circle(0.068f,-0.19f,0.010f,0,0,0);
     //front bumper
-    Circle(0.15f,-0.19f,0.0f,0.01f,0,0,0);
+    Circle(0.15f,-0.19f,0.01f,0,0,0);
     glPopMatrix();
 }
 
@@ -487,9 +487,9 @@ void car_4Component()
     //Wheels
     //backbumper
 
-    Circle(0.068f,-0.19f,0.0f,0.010f,0,0,0);
+    Circle(0.068f,-0.19f,0.010f,0,0,0);
     //front bumper
-    Circle(0.15f,-0.19f,0.0f,0.01f,0,0,0);
+    Circle(0.15f,-0.19f,0.01f,0,0,0);
     glPopMatrix();
 }
 
@@ -603,13 +603,13 @@ void shipComponent(){
 
 void sunComponent()
 {
-    Circle(0.8f, 0.8f, 0.0f, 0.09f, 255, 255, 0);
+    Circle(0.8f, 0.8f, 0.09f, 255, 255, 0);
 }
 
 
 void moonComponent()
 {
-    Circle(0.8f, 0.8f, 0.0f, 0.09f, 204, 204, 204);
+    Circle(0.8f, 0.8f,  0.09f, 204, 204, 204);
 }
 
 void starComponent(){
@@ -1331,18 +1331,18 @@ void rainView()
 
     glPushMatrix();
     glTranslatef(cloud_position,0,0);
-    Circle(-0.58f, 0.75f, 0.0f, 0.060f, 70, 75, 71);//left cloud
-    Circle(-0.5f, 0.82f, 0.0f, 0.068f, 70, 75, 71);
-    Circle(-0.42f, 0.75f, 0.0f, 0.068f, 70, 75, 71);//right cloud
-    Circle(-0.5f, 0.72f, 0.0f, 0.07f, 70, 75, 71);
+    Circle(-0.58f, 0.75f,  0.060f, 70, 75, 71);//left cloud
+    Circle(-0.5f, 0.82f,  0.068f, 70, 75, 71);
+    Circle(-0.42f, 0.75f,  0.068f, 70, 75, 71);//right cloud
+    Circle(-0.5f, 0.72f,  0.07f, 70, 75, 71);
     glPopMatrix();
 
     glPushMatrix();
     glTranslatef(cloud_position_1,0,0);
-    Circle(-0.16f, 0.69f, 0.0f, 0.060f, 70, 75, 71);
-    Circle(-0.08f, 0.76f, 0.0f, 0.068f, 70, 75, 71);
-    Circle(0.0f, 0.68f, 0.0f, 0.068f, 70, 75, 71);
-    Circle(-0.08f, 0.652f, 0.0f, 0.07f, 70, 75, 71);
+    Circle(-0.16f, 0.69f,  0.060f, 70, 75, 71);
+    Circle(-0.08f, 0.76f,  0.068f, 70, 75, 71);
+    Circle(0.0f, 0.68f,  0.068f, 70, 75, 71);
+    Circle(-0.08f, 0.652f, 0.07f, 70, 75, 71);
 
     glPopMatrix();
     glColor3ub(255,255,255);
