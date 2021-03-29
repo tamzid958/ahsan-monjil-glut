@@ -15,7 +15,10 @@ GLfloat car_position = 0.0f;
 GLfloat car_speed = 0.079f;
 GLfloat car3_pos = 0.0f;
 GLfloat car4_pos = 0.78f;
-
+GLfloat cloud_position = 0.20f;
+GLfloat cloud_position_1 = 0.19f;
+GLfloat cloud_speed = 0.008f;
+GLfloat rainPos= -1.0;
 
 void update(int value) {
 
@@ -42,6 +45,24 @@ void update(int value) {
 
     car4_pos -= car_speed;
 
+
+
+    //cloud 1
+    if(cloud_position > 1.5)
+        cloud_position = -1.2f;
+    cloud_position +=cloud_speed;
+    //cloud 2
+    if(cloud_position_1 > 1.8)
+        cloud_position_1 = -1.2f;
+    cloud_position_1 +=cloud_speed;
+
+    //rain
+    if(rainPos<-1.0)
+    {
+        rainPos = -1.0;
+    }
+    rainPos -=1.47;
+
 	glutPostRedisplay();
 	glutTimerFunc(100, update, 0);
 }
@@ -60,24 +81,7 @@ void handleMouse(int button, int state, int x, int y) {
 
 }
 
-void handleKeypress(unsigned char key, int x, int y) {
-	switch (key)
-	{
-        case 'p':
-            car_speed = 0.0f;
-            break;
-        case 'r':
-            car_speed = 0.1f;
-            break;
-        case 'n':
-            glClearColor(0.0f, 0.0f,0.0f,0.0f);
-            break;
 
-
-
-        glutPostRedisplay();
-	}
-}
 
 void SpecialInput(int key, int x, int y)
 {
@@ -112,6 +116,27 @@ void Circle(GLfloat cx, GLfloat cy,GLfloat cz, GLfloat radius,int r,int g,int b)
 		}
 	glEnd();
 }
+
+//cloud circle
+void CloudCircle(GLfloat cx, GLfloat cy,GLfloat cz, GLfloat radius,int r,int g,int b, int c)
+{
+	int triangleAmount = 40; //# of triangles used to draw circle
+	GLfloat twicePi = 2.0f * 3.1416;
+    int counter=0;
+
+    glColor4ub(r,g,b,c);
+	glBegin(GL_TRIANGLE_FAN);
+		glVertex3f(cx, cy,cz); // center of circle
+		for(int i = 0; i <= triangleAmount;i++) {
+			counter+=1;
+			glVertex3f(
+		            cx + (radius * cos(i *  twicePi / triangleAmount)),
+			    cy + (radius * sin(i * twicePi / triangleAmount)),cz
+			);
+		}
+	glEnd();
+}
+
 
 void anyTriangle( float a, float b, float c, float d, float e, float f, int R, int G, int B ){
     glBegin(GL_TRIANGLES);
@@ -1079,7 +1104,7 @@ void WaterView()
     glVertex2f(1.0, -1);// x, y
 	glVertex2f(1.0f, -0.2); // x, y
 	glEnd();
-  glBegin(GL_POLYGON);
+    glBegin(GL_POLYGON);
 
     anyQuad(-1.0f, -0.2f, -1.0f, -1.0f, 1.0f, -1.0f,1.0f, -0.2f, 2, 141, 224);
 
@@ -1311,7 +1336,7 @@ void skyView(){
     sunComponent();
 }
 
-void fullView()
+void dayView()
 {
    initState();
    axisDraw();
@@ -1327,11 +1352,284 @@ void fullView()
 }
 
 
+
+
+
+//************************************Night View********************************
+
+
+void initStateNight(){
+    glClearColor(0,0,0,0);
+
+    glClear(GL_COLOR_BUFFER_BIT);
+    glLineWidth(4);
+    glPointSize(7);
+}
+
+void moonComponentNight()
+{
+    Circle(0.8f, 0.8f, 0.0f, 0.09f, 204, 204, 204);
+}
+
+void star(){
+
+
+glPointSize(2);
+glBegin(GL_POINTS);
+	glColor3ub(255,255,255);
+
+	glVertex2f(-0.9,0.9);
+	glVertex2f(-0.8,0.8);
+	glVertex2f(-0.85,0.95);
+    glVertex2f(-0.75,0.85);
+    glVertex2f(-0.55,0.85);
+    glVertex2f(-0.25,0.85);
+    glVertex2f(-0.25,0.75);
+    glVertex2f(-0.0,0.75);
+    glVertex2f(0.25,0.85);
+    glVertex2f(0.275,0.75);
+    glVertex2f(0.0,0.75);
+    glVertex2f(0.9,0.91);
+	glVertex2f(0.875,0.95);
+    glVertex2f(0,0.99);
+    glVertex2f(-0.1,0.95);
+    glVertex2f(-0.2,0.93);
+    glVertex2f(-0.4,0.95);
+    glVertex2f(0.1,0.95);
+    glVertex2f(0.2,0.93);
+    glVertex2f(0.4,0.95);
+    glVertex2f(0.7,0.95);
+    glVertex2f(0.8,0.95);
+glEnd();
+
+}
+
+
+void skyViewNight(){
+    moonComponentNight();
+    star();
+}
+
+void mountainViewNight(){
+
+    glLoadIdentity();//Mountain
+    glColor3ub(0, 51, 17);
+    glBegin(GL_POLYGON);
+    glVertex2f(-1, 0.5);
+    glVertex2f(1, 0.5);
+    glVertex2f(0.9, 0.7);
+    glVertex2f(0.8, 0.55);
+    glVertex2f(0.5, 0.75);
+    glVertex2f(0.3, 0.55);
+    glVertex2f(0.1, 0.88);
+    glVertex2f(-0.1, 0.66);
+    glVertex2f(-0.3, 0.79);
+    glVertex2f(-0.6, 0.63);
+    glVertex2f(-0.7, 0.71);
+    glVertex2f(-0.9, 0.59);
+    glEnd();//endOfMountain
+    glLoadIdentity();
+
+    grassComponent();
+}
+
+
+
+void WaterViewNight()
+{
+
+     glBegin(GL_QUADS);
+    glColor3ub(0, 19, 77);
+	glVertex2f(-1.0f, -0.2f);    // x, y
+    glVertex2f(-1.0f,-1);
+    glVertex2f(1.0, -1);// x, y
+	glVertex2f(1.0f, -0.2); // x, y
+	glEnd();
+    glBegin(GL_POLYGON);
+
+    anyQuad(-1.0f, -0.2f, -1.0f, -1.0f, 1.0f, -1.0f,1.0f, -0.2f, 0, 32, 128);
+
+    glBegin(GL_POLYGON);
+
+    glColor3ub(0, 19, 77);  //2, 120, 191
+    glVertex2f(1.0f, -0.8f);
+    glVertex2f(1.0f, -0.8f);
+    glVertex2f(-1.0f, -0.8f);
+    glVertex2f(-1.0f, -0.8f);
+    glVertex2f(-0.8f, -0.8f);
+    glVertex2f(-0.6f, -0.7f);
+    glVertex2f(-0.4f, -0.7f);
+    glVertex2f(-0.2f, -0.8f);
+    glVertex2f(-0.0f, -0.7f);
+    glVertex2f(0.2f, -0.7f);
+    glVertex2f(0.4f, -0.8f);
+    glVertex2f(0.6f, -0.8f);
+    glVertex2f(0.8f, -0.7f);
+    glVertex2f(1.0f, -0.7f);
+    glEnd();
+
+	//waves
+    glBegin(GL_LINE_STRIP);
+    glColor3ub(0, 19, 77);
+    glVertex2f(1.0f, -0.8f);
+    glVertex2f(-1.0f, -0.8f);
+    glVertex2f(-1.0f, -0.7f);
+    glVertex2f(-0.8f, -0.8f);
+    glVertex2f(-0.6f, -0.7f);
+    glVertex2f(-0.4f, -0.7f);
+    glVertex2f(-0.2f, -0.8f);
+    glVertex2f(-0.0f, -0.7f);
+    glVertex2f(0.2f, -0.7f);
+    glVertex2f(0.4f, -0.8f);
+    glVertex2f(0.6f, -0.8f);
+    glVertex2f(0.8f, -0.7f);
+    glVertex2f(1.0f, -0.7f);
+    glEnd();
+
+
+
+
+
+
+    shipComponent();
+
+}
+
+
+
+
+void nightView()
+{
+   initStateNight();
+   skyViewNight();
+   mountainViewNight();
+   desertView();
+   buildingsView();
+   ahsanMonjilView();
+   roadView();
+   WaterViewNight();
+   glFlush();
+
+}
+
+
+//*****************************************Rain********************************
+
+
+void rain()
+{
+
+float x=0.0;
+float y=1.5;
+float x1=-0.099;
+
+     glPushMatrix();
+    glTranslatef(cloud_position,0,0);
+    CloudCircle(-0.58f,0.75f,0.0f,0.060f,47,79,79,150);//left cloud
+    CloudCircle(-0.5f,0.82f,0.0f,0.068f,47,79,79,150);
+    CloudCircle(-0.42f,0.75f,0.0f,0.068f,47,79,79,150);//right cloud
+    CloudCircle(-0.5f,0.72f,0.0f,0.07f,47,79,79,150);
+    glPopMatrix();
+
+     glPushMatrix();
+    glTranslatef(cloud_position_1,0,0);
+    CloudCircle(-0.16f,0.69f,0.0f,0.060f,47,79,79,150);
+    CloudCircle(-0.08f,0.76f,0.0f,0.068f,47,79,79,120);
+    CloudCircle(0.0f,0.68f,0.0f,0.068f,47,79,79,120);
+    CloudCircle(-0.08f,0.652f,0.0f,0.07f,47,79,79,120);
+
+
+    glPopMatrix();
+
+    glColor3ub(255,255,255);
+    glPushMatrix();
+    glTranslatef(0,rainPos,0);
+    glBegin(GL_LINES);
+
+    for(int i=600;i>=0;i--)
+    {
+        for(int j=0;j<=i;j++)
+        {
+            glVertex3f(x,y,0);
+            glVertex3f(x+0.05,y+0.09,0);
+            x+=float(rand()%5)/10;
+           // x-=rand()%1050;
+        }
+        for(int j=0;j<=i;j++)
+        {
+            glVertex3f(x1,y,0);
+            glVertex3f(x1+0.05,y+0.09,0);
+            //x+=rand()%1050;
+            x1-=float(rand()%5)/10;
+        }
+        y+=float(rand()%10)/10;
+        //y-=rand()%15;
+        x=0.0;
+        x1=-0.099;
+
+    }
+    glEnd();
+    glPopMatrix();
+    glutPostRedisplay();
+
+}
+
+
+
+
+
+void rainView()
+{
+   initStateNight();
+   mountainViewNight();
+   desertView();
+   buildingsView();
+   ahsanMonjilView();
+   roadView();
+   WaterViewNight();
+   rain();
+
+
+   glFlush();
+
+}
+
+
+
+void handleKeypress(unsigned char key, int x, int y) {
+	switch (key)
+	{
+        case 'p':
+            car_speed = 0.0f;
+            break;
+        case 's':
+            car_speed = 0.1f;
+            break;
+        case 'n':
+            glutDisplayFunc(nightView);
+            break;
+        case 'd':
+            glutDisplayFunc(dayView);
+            break;
+        case 'r':
+            glutDisplayFunc(rainView);
+            break;
+
+
+
+        glutPostRedisplay();
+	}
+}
+
+
+
+
+
 int main(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitWindowSize(1200, 800);
     glutCreateWindow("Ahsan Monjil");
-    glutDisplayFunc(fullView);
+    glutDisplayFunc(dayView);
     glutIdleFunc(Idle);
     glutKeyboardFunc(handleKeypress);
     glutMouseFunc(handleMouse);
