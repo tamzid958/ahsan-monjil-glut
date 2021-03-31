@@ -3,7 +3,6 @@
 #include <GL/glut.h>
 #include <math.h>
 #include<mmsystem.h>
-#include <unistd.h>
 #include "shapes.h"
 #include "components.h"
 
