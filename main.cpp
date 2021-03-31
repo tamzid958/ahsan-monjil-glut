@@ -27,7 +27,7 @@ GLfloat ship_speed = 0.005f;
 bool isDay = true;
 bool isRainy = false;
 bool isHide = false;
-
+bool isFullScreen = false;
 
 void update(int value) {
 
@@ -865,7 +865,7 @@ void rainView()
 
 void instructions(){
     anyText("p = pause , s = start , key up = increase , key down = decrease, key left = car horn, key right = ship horn", -0.95f, -0.90f, 255, 255, 255);
-    anyText("d = day \\ night , r = rain on \\ off , i = info hide \\ show", -0.95f, -0.95f, 255, 255, 255);
+    anyText("d = day \\ night , r = rain on \\ off , i = info hide \\ show , f = fullscreen \\ minimized, e = exit", -0.95f, -0.95f, 255, 255, 255);
 }
 
 
@@ -913,6 +913,13 @@ void handleKeypress(unsigned char key, int x, int y) {
             break;
         case 'i':
             isHide = !isHide;
+            break;
+        case 'f':
+            isFullScreen = !isFullScreen;
+            (isFullScreen) ? glutFullScreen() : glutReshapeWindow(1200, 800);
+            break;
+        case 'e':
+            exit(0);
             break;
         glutPostRedisplay();
 	}
