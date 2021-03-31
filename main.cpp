@@ -864,8 +864,8 @@ void rainView()
 }
 
 void instructions(){
-    anyText("p = pause , s = start , key up = increase , key down = decrease, key left = car horn, key right = ship horn", -0.95f, -0.90f, 255, 255, 255);
-    anyText("d = day \\ night , r = rain on \\ off , i = info hide \\ show , f = fullscreen \\ minimized, e = exit", -0.95f, -0.95f, 255, 255, 255);
+    anyText("p = pause , s = start , key up = increase , key down = decrease , key left = car horn , key right = ship horn", -0.95f, -0.90f, 255, 255, 255);
+    anyText("d = day \\ night , r = rain on \\ off , i = info hide \\ show , f = fullscreen \\ minimized , e = exit", -0.95f, -0.95f, 255, 255, 255);
 }
 
 
