@@ -412,3 +412,7 @@ void starComponent(){
     glEnd();
     glPointSize(7);
 }
+
+void credit(){
+    anyText("Created by: @tamzid, @sohan, @jubo, @tarek", 0.2f, -0.17f, 255, 255, 0);
+}

@@ -29,6 +29,8 @@ bool isRainy = false;
 bool isHide = false;
 bool isFullScreen = false;
 
+
+
 void update(int value) {
 
     if(position <-1.0)
@@ -82,6 +84,7 @@ void Idle()
 void initState(){
     glClearColor(0.5f, 1.0f, 1.0f, 0.0f);
     glClear(GL_COLOR_BUFFER_BIT);
+    glEnable(GL_COLOR_MATERIAL);
     glLineWidth(4);
     glPointSize(7);
 }
@@ -643,6 +646,8 @@ void roadView()
 
     glEnd();
 
+    credit();
+
     glLoadIdentity();
     glPushMatrix();
     glTranslatef(car_pos,0,0);
@@ -867,8 +872,6 @@ void instructions(){
     anyText("p = pause , s = start , key up = increase , key down = decrease , key left = car horn , key right = ship horn", -0.95f, -0.90f, 255, 255, 255);
     anyText("d = day \\ night , r = rain on \\ off , i = info hide \\ show , f = fullscreen \\ minimized , e = exit", -0.95f, -0.95f, 255, 255, 255);
 }
-
-
 
 void fullView()
 {
