@@ -3,6 +3,7 @@
 #include <GL/glut.h>
 #include <math.h>
 #include<mmsystem.h>
+#include <unistd.h>
 #include "shapes.h"
 #include "components.h"
 
@@ -851,21 +852,16 @@ void rainView()
 }
 
 void instructions(){
-    anyText("p = pause , s = start , key up = increase , key down = decrease, d = day \\ night , r = rain on \\ off , i = info hide \\ show", -0.95f, -0.95f, 255, 255, 255);
+    anyText("p = pause , s = start , key up = increase , key down = decrease, key left = car horn, key right = ship horn", -0.95f, -0.90f, 255, 255, 255);
+    anyText("d = day \\ night , r = rain on \\ off , i = info hide \\ show", -0.95f, -0.95f, 255, 255, 255);
 }
 
 
-void playSound()
-{
-
-   // (isRainy) ? PlaySound("assets/rain.wav", NULL, SND_FILENAME) : NULL;
-}
 
 void fullView()
 {
     initState();
    //axisDraw();
-    playSound();
 
     skyView();
 
@@ -901,6 +897,7 @@ void handleKeypress(unsigned char key, int x, int y) {
             break;
         case 'r':
             isRainy = !isRainy;
+            (isRainy) ? PlaySound("assets/rain.wav", NULL, SND_FILENAME|SND_ASYNC|SND_LOOP) : PlaySound(NULL, 0, 0);
             break;
         case 'i':
             isHide = !isHide;
@@ -942,8 +939,10 @@ void SpecialInput(int key, int x, int y)
             }
             break;
         case GLUT_KEY_LEFT:
+            PlaySound("assets/car_double_horn.wav", NULL, SND_FILENAME|SND_ASYNC);
             break;
         case GLUT_KEY_RIGHT:
+            PlaySound("assets/ship.wav", NULL, SND_FILENAME|SND_ASYNC);
             break;
         }
     glutPostRedisplay();
