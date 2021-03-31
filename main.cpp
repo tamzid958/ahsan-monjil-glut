@@ -20,6 +20,7 @@ GLfloat cloud_speed = 0.008f;
 GLfloat rainPos= -1.0;
 
 GLfloat ship_pos = 0.78f;
+GLfloat ship_pos_1 = -0.78f;
 GLfloat ship_speed = 0.005f;
 
 
@@ -64,6 +65,9 @@ void update(int value) {
         ship_pos = 1.2f;
     ship_pos -= ship_speed;
 
+    if(ship_pos_1 > 1.3)
+        ship_pos_1 = -1.4f;
+    ship_pos_1 += ship_speed;
 
 	glutPostRedisplay();
 	glutTimerFunc(100, update, 0);
@@ -580,7 +584,16 @@ void WaterView(int R, int G, int B)
 
     glLoadIdentity();
     glPushMatrix();
+    glTranslatef(ship_pos_1,0,0);
+    glScalef(0.6, 0.6, 0);
+    shipComponent();
+    glPopMatrix();
+    glLoadIdentity();
+
+    glLoadIdentity();
+    glPushMatrix();
     glTranslatef(ship_pos,0,0);
+    glScalef(0.9, 0.9, 0);
     shipComponent();
     glPopMatrix();
     glLoadIdentity();
