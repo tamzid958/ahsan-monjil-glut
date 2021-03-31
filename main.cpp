@@ -969,6 +969,7 @@ void SpecialInput(int key, int x, int y)
 
 
 int main(int argc, char** argv) {
+    FreeConsole();
     glutInit(&argc, argv);
     glutInitWindowSize(1200, 800);
     glutCreateWindow("Ahsan Monjil");
