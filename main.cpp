@@ -510,31 +510,33 @@ void ahsanMonjilView(){
     glLoadIdentity();
 
 //stairs
-    anyQuad(-0.12f, 0.3f, 0.17f, 0.3f, 0.35f, 0.0f, -0.3f, 0.0f, 70, 75, 71);
+    anyQuad(-0.08f, 0.3f, 0.13f, 0.3f, 0.29f, 0.0f, -0.25f, 0.0f, 36, 33, 36);
+
+    anyQuad(-0.17f, 0.15f, 0.21f, 0.15f, 0.29f, 0.0f, -0.25f, 0.0f, 53, 56, 57);
 
     glLineWidth(7);
     glBegin(GL_LINES);
     glColor3ub(35,43,43);
-    glVertex2f(0.17f, 0.3f);
-    glVertex2f(-0.12f, 0.3f);
+    glVertex2f(0.13f, 0.3f);
+    glVertex2f(-0.08f, 0.3f);
 
-    glVertex2f(0.2f, 0.25f);
-    glVertex2f(-0.15f, 0.25f);
+    glVertex2f(0.16f, 0.25f);
+    glVertex2f(-0.11f, 0.25f);
 
-    glVertex2f(0.23f, 0.20f);
-    glVertex2f(-0.18f, 0.20f);
+    glVertex2f(0.19f, 0.20f);
+    glVertex2f(-0.14f, 0.20f);
 
-    glVertex2f(0.26f, 0.15f);
-    glVertex2f(-0.21f, 0.15f);
+    glVertex2f(0.21f, 0.15f);
+    glVertex2f(-0.17f, 0.15f);
 
-    glVertex2f(0.29f, 0.10f);
-    glVertex2f(-0.24f, 0.10f);
+    glVertex2f(0.24f, 0.10f);
+    glVertex2f(-0.20f, 0.10f);
 
-    glVertex2f(0.32f, 0.05f);
-    glVertex2f(-0.27f, 0.05f);
+    glVertex2f(0.27f, 0.05f);
+    glVertex2f(-0.22f, 0.05f);
 
-    glVertex2f(0.35f, 0.0f);
-    glVertex2f(-0.3f, 0.0f);
+    glVertex2f(0.29f, 0.0f);
+    glVertex2f(-0.25f, 0.0f);
     glEnd();
     glLineWidth(4);
 

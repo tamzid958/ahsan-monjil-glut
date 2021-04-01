@@ -3,7 +3,7 @@
 #define PI  3.14159265358979323846
 
 int i;
-int triangleAmount = 100;
+int triangleAmount = 500;
 GLfloat x = 0,y = 0,radius = 0;
 GLfloat twicePi = 2.0f * PI;
 
