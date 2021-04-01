@@ -546,7 +546,7 @@ void ahsanMonjilView(){
 void WaterView(int R, int G, int B)
 {
 
-    anyQuad(-1.0f, -0.2f, -1.0f, -1.0f, 1.0f, -1.0f,1.0f, -0.2f, R, G, B);
+    anyQuad(-1.0f, -0.22f, -1.0f, -1.0f, 1.0f, -1.0f,1.0f, -0.22f, R, G, B);
 
     glBegin(GL_POLYGON);
 
@@ -620,11 +620,9 @@ void roadView()
     //road border
     glLineWidth(6.0);
     glBegin(GL_LINES);
-
     glColor3ub(255,255,255);
     glVertex2f(-1.0f, -0.005f);//building front road border
     glVertex2f(1.0f, -0.005f);
-
     glEnd();
 
     //Road lines
@@ -674,6 +672,13 @@ void roadView()
     car_4Component();
     glPopMatrix();
     glLoadIdentity();
+
+    glLineWidth(6.0);
+    glBegin(GL_LINES);
+    glColor3ub(255,255,255);
+    glVertex2f(-1.0f, -0.21f);//building front road border
+    glVertex2f(1.0f, -0.21f);
+    glEnd();
 }
 
 void mountainView(int R, int G, int B){
