@@ -515,6 +515,8 @@ void ahsanMonjilView(){
     glLoadIdentity();
 
 //stairs
+    anyQuad(-0.12f, 0.3f, 0.17f, 0.3f, 0.35f, 0.0f, -0.3f, 0.0f, 70, 75, 71);
+
     glLineWidth(7);
     glBegin(GL_LINES);
     glColor3ub(35,43,43);
