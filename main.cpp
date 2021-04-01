@@ -607,15 +607,8 @@ void roadView()
 {
 
   //road-base
-    glBegin(GL_POLYGON);
 
-    glColor3ub(145,145,145);
-    glVertex2f(-1.0f, 0.0f);
-    glVertex2f(-1.0f, -0.2f);
-    glVertex2f(1.0f, -0.2f);
-    glVertex2f(1.0f, 0.0f);
-
-    glEnd();
+    anyQuad(-1.0f, 0.0f, -1.0f, -0.22f, 1.0f, -0.22f, 1.0f, 0.0f, 145, 145, 145);
 
     //road border
     glLineWidth(6.0);
