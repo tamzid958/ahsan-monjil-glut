@@ -1,6 +1,10 @@
+#include <windows.h>
+#include <iostream>
 #include <GL/glut.h>
 #include <math.h>
+#include<mmsystem.h>
 #define PI  3.14159265358979323846
+using namespace std;
 
 int i;
 int triangleAmount = 500;
@@ -48,7 +52,7 @@ void lineComponent(float a, float b, float c, float d){
    glEnd();
 }
 
-void anyText(std::string text,float x, float y, int R, int G, int B){
+void anyText(string text, float x, float y, int R, int G, int B){
     glColor3ub(R, G, B);
     glRasterPos2f(x, y);
     for (i = 0; i < text.length(); i++) {

@@ -1,8 +1,3 @@
-#include <windows.h>
-#include <iostream>
-#include <GL/glut.h>
-#include <math.h>
-#include<mmsystem.h>
 #include "shapes.h"
 #include "components.h"
 
@@ -27,8 +22,6 @@ bool isDay = true;
 bool isRainy = false;
 bool isHide = false;
 bool isFullScreen = false;
-
-
 
 void update(int value) {
 

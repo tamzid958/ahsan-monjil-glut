@@ -1,6 +1,3 @@
-#include <GL/glut.h>
-#include <math.h>
-
 void blank(){
 }
 
@@ -380,7 +377,7 @@ void sunComponent()
 
 void moonComponent()
 {
-    Circle(0.8f, 0.8f,  0.09f, 204, 204, 204);
+    Circle(0.8f, 0.8f,  0.09f, 245, 245, 245);
 }
 
 void starComponent(){
