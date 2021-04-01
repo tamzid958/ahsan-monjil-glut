@@ -1,3 +1,5 @@
+#include "shapes.h"
+
 void blank(){
 }
 
@@ -72,8 +74,8 @@ void carComponent()
     glVertex3f(-0.3,-0.07,0);
     glEnd();
 
- 
- 
+
+
     glBegin(GL_POLYGON);
     glColor3ub(0,0,0);
     glVertex3f(-0.255,-0.038,0);
@@ -223,7 +225,7 @@ void car_3Component()
 void car_4Component()
 {
     anyQuad(0.04f, -0.14f, 0.04f, -0.19f, 0.19f, -0.19f, 0.19f, -0.14f, 255, 0, 0);
-   
+
     glBegin(GL_POLYGON);
     glColor3ub(255, 0, 0);
     glVertex2f(0.078f, -0.11f);
@@ -314,19 +316,19 @@ void shipComponent(){
 
 	glBegin(GL_LINES);
     glColor3ub(31, 31, 31);
-    glVertex2f(0.2f, -0.65f);    
+    glVertex2f(0.2f, -0.65f);
     glVertex2f(0.2f,-0.6f);
 	glEnd();
 
 	glBegin(GL_LINES);
     glColor3ub(31, 31, 31);
-    glVertex2f(0.25f, -0.65f);    
+    glVertex2f(0.25f, -0.65f);
     glVertex2f(0.25,-0.6f);
 	glEnd();
 
 	glBegin(GL_LINES);
     glColor3ub(31, 31, 31);
-    glVertex2f(0.3f, -0.65f);  
+    glVertex2f(0.3f, -0.65f);
     glVertex2f(0.3f,-0.6f);
 	glEnd();
 
@@ -336,18 +338,18 @@ void shipComponent(){
 
     glBegin(GL_LINES);
     glColor3ub(31, 31, 31);
-    glVertex2f(0.45f, -0.65f);   
+    glVertex2f(0.45f, -0.65f);
     glVertex2f(0.45f,-0.6f);
 	glEnd();
 
 	glBegin(GL_LINES);
     glColor3ub(31, 31, 31);
-    glVertex2f(0.5f, -0.65f); 
+    glVertex2f(0.5f, -0.65f);
     glVertex2f(0.5f,-0.6f);
 	glEnd();
 
     anyQuad(0.6f, -0.65f, 0.6f, -0.6f, 0.65f, -0.6f, 0.65,-0.65f, 255, 255, 255);
-    
+
     anyQuad(0.2f, -0.4f, 0.2f, -0.55f, 0.25f, -0.55f, 0.25f, -0.4f, 43, 40, 40);
 
     anyQuad(0.21f, -0.4f, 0.2f, -0.3f, 0.25f, -0.3f, 0.24f, -0.4f, 235, 70, 0);

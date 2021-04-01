@@ -1,4 +1,5 @@
-#include "shapes.h"
+#include <windows.h>
+#include<mmsystem.h>
 #include "components.h"
 
 GLfloat rotation_increaser = 0.0f;

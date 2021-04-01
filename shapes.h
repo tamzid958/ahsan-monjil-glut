@@ -1,8 +1,6 @@
-#include <windows.h>
 #include <iostream>
 #include <GL/glut.h>
-#include <math.h>
-#include<mmsystem.h>
+#include <cmath>
 #define PI  3.14159265358979323846
 using namespace std;
 
