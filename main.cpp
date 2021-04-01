@@ -14,8 +14,7 @@ GLfloat car_speed = 0.079f;
 GLfloat car3_pos = 0.0f;
 GLfloat car4_pos = 0.78f;
 
-GLfloat cloud_position = 0.20f;
-GLfloat cloud_position_1 = 0.19f;
+GLfloat cloud_position = -0.20f;
 GLfloat cloud_speed = 0.008f;
 GLfloat rainPos= -1.0;
 
@@ -51,13 +50,9 @@ void update(int value) {
         car4_pos = 1.2f;
     car4_pos -= car_speed;
 
-    if(cloud_position > 1.5)
-        cloud_position = -1.2f;
-    cloud_position +=cloud_speed;
-
-    if(cloud_position_1 > 1.8)
-        cloud_position_1 = -1.2f;
-    cloud_position_1 +=cloud_speed;
+    if(cloud_position < -1.1)
+        cloud_position = 1.1f;
+    cloud_position -=cloud_speed;
 
     if(rainPos<-1.0)
         rainPos = -1.0;
@@ -803,6 +798,52 @@ void buildingsView(){
         }
 }
 
+void treeView(){
+    glLoadIdentity();
+    glTranslatef(0.2f, 0.2f, 0);
+    treeComponent();
+    glLoadIdentity();
+
+    glLoadIdentity();
+    glTranslatef(0.25f, 0.1f, 0);
+    treeComponent();
+    glLoadIdentity();
+
+    glLoadIdentity();
+    glTranslatef(0.15f, 0.1f, 0);
+    treeComponent();
+    glLoadIdentity();
+
+    glLoadIdentity();
+    glTranslatef(-1.65f, 0.3f, 0);
+    treeComponent();
+    glLoadIdentity();
+
+    glLoadIdentity();
+    glTranslatef(-1.59f, 0.3f, 0);
+    treeComponent();
+    glLoadIdentity();
+
+    glLoadIdentity();
+    glTranslatef(-1.7f, 0.2f, 0);
+    treeComponent();
+    glLoadIdentity();
+
+    glLoadIdentity();
+    glTranslatef(-1.62f, 0.2f, 0);
+    treeComponent();
+    glLoadIdentity();
+
+    glLoadIdentity();
+    glTranslatef(-1.65f, 0.1f, 0);
+    treeComponent();
+    glLoadIdentity();
+
+    glLoadIdentity();
+    glTranslatef(-1.55f, 0.1f, 0);
+    treeComponent();
+    glLoadIdentity();
+}
 
 void desertView(){
     anyQuad(1.0f, 0.5f, 1.0f, 0.1f, -1.0f, 0.1f, -1.0f, 0.5f, 76, 70, 50);
@@ -818,27 +859,32 @@ void skyView(){
     (isDay) ? sunComponent() : NightSkyJoinedComponent();
 }
 
+void cloudView(){
+    glPushMatrix();
+    glTranslatef(cloud_position,0,0);
+    cloudComponent();
+
+    glTranslatef(cloud_position - 0.8f,0,0);
+    cloudComponent();
+
+    glTranslatef(cloud_position + 0.4f,0,0);
+    cloudComponent();
+
+    glTranslatef(cloud_position - 1.5f,0,0);
+    cloudComponent();
+
+    glTranslatef(cloud_position + 1.2f,0,0);
+    cloudComponent();
+
+    glTranslatef(cloud_position + 0.9f,0,0);
+    cloudComponent();
+    glPopMatrix();
+}
+
 void rainView()
 {
 
     float x=0.0, y = 1.5, x1=-0.099;
-
-    glPushMatrix();
-    glTranslatef(cloud_position,0,0);
-    Circle(-0.58f, 0.75f,  0.060f, 70, 75, 71);//left cloud
-    Circle(-0.5f, 0.82f,  0.068f, 70, 75, 71);
-    Circle(-0.42f, 0.75f,  0.068f, 70, 75, 71);//right cloud
-    Circle(-0.5f, 0.72f,  0.07f, 70, 75, 71);
-    glPopMatrix();
-
-    glPushMatrix();
-    glTranslatef(cloud_position_1,0,0);
-    Circle(-0.16f, 0.69f,  0.060f, 70, 75, 71);
-    Circle(-0.08f, 0.76f,  0.068f, 70, 75, 71);
-    Circle(0.0f, 0.68f,  0.068f, 70, 75, 71);
-    Circle(-0.08f, 0.652f, 0.07f, 70, 75, 71);
-
-    glPopMatrix();
     glColor3ub(255,255,255);
     glPushMatrix();
     glTranslatef(0,rainPos,0);
@@ -875,27 +921,23 @@ void instructions(){
     anyText("d = day \\ night , r = rain on \\ off , i = info hide \\ show , f = fullscreen \\ minimized , e = exit", -0.95f, -0.95f, 255, 255, 255);
 }
 
+
 void fullView()
 {
     initState();
-   //axisDraw();
-
+    //axisDraw();
     skyView();
-
-   (isDay) ? mountainView(15, 114, 22) : mountainView(0, 51, 17);
-
-   desertView();
-   buildingsView();
-   ahsanMonjilView();
-   roadView();
-
-   (isDay) ? WaterView(2, 120, 191) : WaterView(0, 19, 77);
-
-   (isRainy) ? rainView() : blank();
-
-   (isHide) ? blank() : instructions();
+    (isDay) ? mountainView(15, 114, 22) : mountainView(0, 51, 17);
+    (isRainy) ? cloudView() : blank();
+    desertView();
+    buildingsView();
+    ahsanMonjilView();
+    treeView();
+    roadView();
+    (isDay) ? WaterView(2, 120, 191) : WaterView(0, 19, 77);
+    (isHide) ? blank() : instructions();
+    (isRainy) ? rainView() : blank();
     glFlush();
-
 }
 
 void handleKeypress(unsigned char key, int x, int y) {
