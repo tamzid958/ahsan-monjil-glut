@@ -44,8 +44,8 @@ void update(int value) {
         car4_pos = 1.2f;
     car4_pos -= car_speed;
 
-    if(cloud_position < -1.1)
-        cloud_position = 1.1f;
+    if(cloud_position < -1.2)
+        cloud_position = 1.2f;
     cloud_position -=cloud_speed;
 
     if(rainPos<-1.0)
@@ -666,6 +666,7 @@ void roadView()
     glVertex2f(-1.0f, -0.21f);//building front road border
     glVertex2f(1.0f, -0.21f);
     glEnd();
+    glLineWidth(4.0);
 }
 
 void mountainView(int R, int G, int B){
@@ -858,19 +859,19 @@ void cloudView(){
     glTranslatef(cloud_position,0,0);
     cloudComponent();
 
-    glTranslatef(cloud_position - 0.8f,0,0);
+    glTranslatef(cloud_position + 0.8f,0,0);
     cloudComponent();
 
-    glTranslatef(cloud_position + 0.4f,0,0);
+    glTranslatef(cloud_position - 0.4f,0,0);
     cloudComponent();
 
-    glTranslatef(cloud_position - 1.5f,0,0);
+    glTranslatef(cloud_position + 1.5f,0,0);
     cloudComponent();
 
-    glTranslatef(cloud_position + 1.2f,0,0);
+    glTranslatef(cloud_position - 1.2f,0,0);
     cloudComponent();
 
-    glTranslatef(cloud_position + 0.9f,0,0);
+    glTranslatef(cloud_position - 0.9f,0,0);
     cloudComponent();
     glPopMatrix();
 }
