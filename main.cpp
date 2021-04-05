@@ -18,11 +18,35 @@ GLfloat ship_pos = 0.78f;
 GLfloat ship_pos_1 = -0.78f;
 GLfloat ship_speed = 0.005f;
 
+GLfloat autoNightTimer = 0.0f;
+GLfloat autoNightSpeed = 0.05f;
+
+GLfloat autoRainTimer = 0.0f;
+GLfloat autoRainSpeed = 0.05f;
 
 bool isDay = true;
 bool isRainy = false;
 bool isHide = false;
 bool isFullScreen = false;
+bool isAutoOff = false;
+
+
+void autoView(){
+  if(autoNightTimer > 25){
+        isDay = !isDay;
+        autoNightTimer = 0.0f;
+    }
+    autoNightTimer += autoNightSpeed;
+
+    if(autoRainTimer > 10){
+        isRainy = !isRainy;
+        (isRainy) ? PlaySound("assets/rain.wav", NULL, SND_FILENAME|SND_ASYNC|SND_LOOP) : PlaySound(NULL, 0, 0);
+        autoRainTimer = 0.0f;
+    }
+    autoRainTimer +=autoRainSpeed;
+}
+
+
 
 void update(int value) {
 
@@ -59,6 +83,8 @@ void update(int value) {
     if(ship_pos_1 > 1.3)
         ship_pos_1 = -1.4f;
     ship_pos_1 += ship_speed;
+
+    (isAutoOff) ? blank() : autoView();
 
 	glutPostRedisplay();
 	glutTimerFunc(100, update, 0);
@@ -913,7 +939,7 @@ void rainView()
 
 void instructions(){
     anyText("p = pause , s = start , key up = increase , key down = decrease , key left = car horn , key right = ship horn", -0.95f, -0.90f, 255, 255, 255);
-    anyText("d = day \\ night , r = rain on \\ off , i = info hide \\ show , f = fullscreen \\ minimized , e = exit", -0.95f, -0.95f, 255, 255, 255);
+    anyText("d = day \\ night , a = auto on \\ off , r = rain on \\ off , i = info hide \\ show , f = fullscreen \\ minimized , e = exit", -0.95f, -0.95f, 255, 255, 255);
 }
 
 
@@ -959,6 +985,9 @@ void handleKeypress(unsigned char key, int x, int y) {
         case 'f':
             isFullScreen = !isFullScreen;
             (isFullScreen) ? glutFullScreen() : glutReshapeWindow(1200, 800);
+            break;
+        case 'a':
+            isAutoOff = !isAutoOff;
             break;
         case 'e':
             exit(0);
