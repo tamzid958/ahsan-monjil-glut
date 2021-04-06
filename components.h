@@ -429,5 +429,5 @@ void treeComponent(){
 }
 
 void credit(){
-    anyText("Created by: @tamzid, @shohan, @jubo, @tarek", 0.2f, -0.17f, 103, 72, 70);
+    anyText("Created by: @tamzid, @shohan, @torab, @tarek", 0.2f, -0.17f, 103, 72, 70);
 }
