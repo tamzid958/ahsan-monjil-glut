@@ -28,7 +28,7 @@ bool isDay = true;
 bool isRainy = false;
 bool isHide = false;
 bool isFullScreen = false;
-bool isAutoOff = false;
+bool isAuto = true;
 
 
 void autoView(){
@@ -84,7 +84,7 @@ void update(int value) {
         ship_pos_1 = -1.4f;
     ship_pos_1 += ship_speed;
 
-    (isAutoOff) ? blank() : autoView();
+    (isAuto) ? autoView() : blank();
 
 	glutPostRedisplay();
 	glutTimerFunc(100, update, 0);
@@ -987,7 +987,7 @@ void handleKeypress(unsigned char key, int x, int y) {
             (isFullScreen) ? glutFullScreen() : glutReshapeWindow(1200, 800);
             break;
         case 'a':
-            isAutoOff = !isAutoOff;
+            isAuto = !isAuto;
             break;
         case 'e':
             exit(0);
