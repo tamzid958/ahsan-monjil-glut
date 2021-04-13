@@ -98,10 +98,13 @@ void Idle()
 
 void initState(){
     glClearColor(0.5f, 1.0f, 1.0f, 0.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
-    glEnable(GL_COLOR_MATERIAL);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glEnable(GL_COLOR_MATERIAL | GL_LIGHTING);
     glLineWidth(4);
     glPointSize(7);
+    glClear(GL_COLOR_BUFFER_BIT );
+    GLfloat global_ambient[] = {1.9,0.0,0.0, 0.1};
+    glLightModelfv(GL_LIGHT_MODEL_AMBIENT, global_ambient);
 }
 
 
@@ -958,6 +961,7 @@ void fullView()
     (isDay) ? WaterView(2, 120, 191) : WaterView(0, 19, 77);
     (isHide) ? blank() : instructions();
     (isRainy) ? rainView() : blank();
+    glDisable(GL_COLOR_MATERIAL | GL_LIGHTING);
     glFlush();
 }
 
