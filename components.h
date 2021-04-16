@@ -428,6 +428,12 @@ void treeComponent(){
     anyQuad(0.73f, 0.10f, 0.73f, 0.0f, 0.74f, 0.0f, 0.74f, 0.10f, 153, 76, 0);
 }
 
+void lampComponent(int R, int G, int B){
+    anyQuad(-0.7f, 0.3f, -0.7f, 0.0f, -0.72f, 0.0f, -0.72f, 0.3f, 0, 0, 0);
+    anyQuad(-0.7f, 0.3f, -0.7f, 0.28f, -0.65f, 0.28f, -0.65f, 0.3f, 0, 0, 0);
+    anyQuad(-0.68f, 0.28f, -0.68f, 0.25f, -0.65f, 0.25f, -0.65f, 0.28f, R, G, B);
+}
+
 void credit(){
     anyText("Created by: @tamzid, @shohan, @torab, @tarek", 0.2f, -0.17f, 103, 72, 70);
 }

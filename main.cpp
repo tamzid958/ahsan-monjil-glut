@@ -624,12 +624,42 @@ void WaterView(int R, int G, int B)
     glLoadIdentity();
 }
 
-
-
-void roadView()
+void roadView(int R, int G, int B)
 {
-
+    glLoadIdentity();
+    glTranslatef(0.025, 0.0, 0);
+    lampComponent(R, G, B);
+    glLoadIdentity();
   //road-base
+
+    glLoadIdentity();
+    glTranslatef(-0.2, 0.0, 0);
+    lampComponent(R, G, B);
+    glLoadIdentity();
+
+    glLoadIdentity();
+    glTranslatef(0.3, 0.0, 0);
+    lampComponent(R, G, B);
+    glLoadIdentity();
+
+
+    glLoadIdentity();
+    glTranslatef(1.15, 0.0, 0);
+    lampComponent(R, G, B);
+    glLoadIdentity();
+
+
+    glLoadIdentity();
+    glTranslatef(1.4, 0.0, 0);
+    lampComponent(R, G, B);
+    glLoadIdentity();
+
+    glLoadIdentity();
+    glTranslatef(1.6, 0.0, 0);
+    lampComponent(R, G, B);
+    glLoadIdentity();
+
+
 
     anyQuad(-1.0f, 0.0f, -1.0f, -0.22f, 1.0f, -0.22f, 1.0f, 0.0f, 145, 145, 145);
 
@@ -945,7 +975,6 @@ void instructions(){
     anyText("d = day \\ night , a = auto on \\ off , r = rain on \\ off , i = info hide \\ show , f = fullscreen \\ minimized , e = exit", -0.95f, -0.95f, 255, 255, 255);
 }
 
-
 void fullView()
 {
     initState();
@@ -957,7 +986,7 @@ void fullView()
     buildingsView();
     ahsanMonjilView();
     treeView();
-    roadView();
+    (isDay) ? roadView(255, 255, 255): roadView(255, 255, 0);
     (isDay) ? WaterView(2, 120, 191) : WaterView(0, 19, 77);
     (isHide) ? blank() : instructions();
     (isRainy) ? rainView() : blank();
