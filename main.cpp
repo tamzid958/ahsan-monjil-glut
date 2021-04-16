@@ -752,7 +752,7 @@ void mountainView(int R, int G, int B){
 }
 
 
-void buildingsView(){
+void buildingsView(int R, int G, int B ){
     buildingComponent();
     glTranslatef(0.03f, 0.1f, 0);//TallBuilding1
     glScalef(0.5, 1.1, 0);
@@ -766,7 +766,7 @@ void buildingsView(){
              glLoadIdentity();//smallWindowsTallBuilding1
              glTranslatef(wp1, wp2, 0);
              glScalef(0.3, 0.25, 0);
-             squareWindowComponent(0, 0, 0);
+             squareWindowComponent(R, G, B);
              glLoadIdentity();
              wp2 -= 0.045;
             }
@@ -788,7 +788,7 @@ void buildingsView(){
              glLoadIdentity();//smallWindowsTallBuilding2
              glTranslatef(wp1, wp2, 0);
              glScalef(0.25, 0.2, 0);
-             squareWindowComponent(0, 0, 0);
+             squareWindowComponent(R, G, B);
              glLoadIdentity();
              wp2 -= 0.045;
             }
@@ -810,7 +810,7 @@ void buildingsView(){
              glLoadIdentity();//smallWindowsTallBuilding3
              glTranslatef(wp1, wp2, 0);
              glScalef(0.23, 0.18, 0);
-             squareWindowComponent(0, 0, 0);
+             squareWindowComponent(R, G, B);
              glLoadIdentity();
              wp2 -= 0.045;
             }
@@ -822,7 +822,7 @@ void buildingsView(){
     //smallBuilding2
     glTranslatef(1.4f, 0.1f, 0);
     glScalef(0.6, 0.8, 0);
-    anyQuad(-0.7f , 0.7f, -0.7f, 0.3f, -0.9f, 0.3f, -0.9f, 0.7f, 255, 255, 179);
+    anyQuad(-0.7f , 0.7f, -0.7f, 0.3f, -0.9f, 0.3f, -0.9f, 0.7f, 178, 190, 181);
     glLoadIdentity();
 
     wp1 = 1.275, wp2 = 0.4;
@@ -831,7 +831,7 @@ void buildingsView(){
              glLoadIdentity();//smallWindowsSmallBuilding2
              glTranslatef(wp1, wp2, 0);
              glScalef(0.5, 0.5, 0);
-             ovalWindowComponent(202, 164, 114);
+             ovalWindowComponent(R, G, B);
              glLoadIdentity();
              wp2 -= 0.1;
             }
@@ -843,7 +843,7 @@ void buildingsView(){
              glLoadIdentity();//smallWindowsTallBuilding3
              glTranslatef(wp1, wp2, 0);
              glScalef(0.7, 0.2, 0);
-             squareWindowComponent(202, 164, 114);
+             squareWindowComponent(R, G, B);
              glLoadIdentity();
              wp2 -= 0.1;
             }
@@ -983,7 +983,7 @@ void fullView()
     (isDay) ? mountainView(15, 114, 22) : mountainView(0, 51, 17);
     (isRainy) ? cloudView() : blank();
     desertView();
-    buildingsView();
+    (isDay) ? buildingsView(0, 0 , 0) : buildingsView(255,255,224);
     ahsanMonjilView();
     treeView();
     (isDay) ? roadView(255, 255, 255): roadView(255, 255, 0);
@@ -1006,9 +1006,11 @@ void handleKeypress(unsigned char key, int x, int y) {
             ship_speed = 0.005f;
             break;
         case 'd':
+            isAuto = false;
             isDay = !isDay;
             break;
         case 'r':
+             isAuto = false;
             isRainy = !isRainy;
             (isRainy) ? PlaySound("assets/rain.wav", NULL, SND_FILENAME|SND_ASYNC|SND_LOOP) : PlaySound(NULL, 0, 0);
             break;
